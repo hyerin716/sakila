@@ -51,7 +51,7 @@ public class LoginController {
 			Staff loginStaff = staffMapper.login(paramStaff);
 			if(loginStaff == null) {
 				model.addAttribute("msg", "로그인실패");
-				return "/off/login";
+				return "off/login";
 			}
 			session.setAttribute("loginStaff", loginStaff);
 			log.debug("로그인 성공, 세션loginStaff 속성 추가");

@@ -20,8 +20,49 @@
 		
 		<div class="col-sm-10">
 			<!-- main content -->
-			<h1>staffOne</h1>
+			<h1 class="bg-light mt-3">STAFF 정보</h1>
+			<table class="mt-5 table">
+				
+				<tr>
+					<th>STAFF ID</th>
+					<td>${staff.staffId}</td>
+				</tr>
+				<tr>
+					<th>First Name</th>
+					<td>${staff.firstName}</td>
+				</tr>
+				<tr>
+					<th>Last Name</th>
+					<td>${staff.lastName}</td>
+				</tr>
+				<tr>
+					<th>Address ID</th>
+					<td>${staff.addressId}</td>
+				</tr>
+				<tr>
+					<th>email</th>
+					<td>${staff.email}</td>
+				</tr>
+				<tr>
+					<th>Store ID</th>
+					<td>${staff.storeId}</td>
+				</tr>
+				<tr>
+					<th>Store ID</th>
+					<td>${staff.storeId}</td>
+				</tr>
+				<tr>
+					<th>Username</th>
+					<td>${staff.username}</td>
+				</tr>
+				<tr>
+					<th>Last Update</th>
+					<td>${staff.lastUpdate}</td>
+				</tr>
+			</table>
 		</div>
+		
+		
 	</div>
 	
 </body>

@@ -30,17 +30,22 @@
 	  <div class="col-sm-4"></div>
 	  	
 	  <div class="card col-sm-4">
-	  	<h1 class="mb-5 text-center card-header">Staff Login<span>${msg}</span></h1>
+	  	<h1 class="text-center card-header">Staff Login</h1>
 	  	<form id="form" action="${pageContext.request.contextPath}/off/login" method="post">
-			<div class="mb-3 mt-3 card-body">
-				<label for="staffId" class="form-label">staffId:</label> 
-				<input id="staffId" name="staffId" type="text" class="form-control">
+	  		<div class="card-body">
+				<div class="mb-3">
+					<div class="mb-3 text-danger">${msg}</div>
+					<label for="staffId" class="form-label">STAFF ID</label> 
+					<input id="staffId" name="staffId" type="text" class="form-control">
+				</div>
+				<div class="mb-3">
+					<label for="password" class="form-label">STAFF PW</label> 
+					<input id="password" name="password" type="password" class="form-control">
+				</div>
+	  		</div>
+			<div class="d-grid">
+				<button id="btn" type="button" class="btn btn-outline-primary mt-2 mb-2">로그인</button>
 			</div>
-			<div class="mb-3 card-body">
-				<label for="password" class="form-label">password:</label> 
-				<input id="password" name="password" type="password" class="form-control">
-			</div>
-			<button id="btn" type="button" class="btn btn-primary mb-3 card-footer">로그인</button>
 		</form>
 	  </div>
 	  
