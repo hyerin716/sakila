@@ -4,6 +4,14 @@
 
 <!DOCTYPE html>
 <html>
+<!-- body전에 스크립트를 입력하지만 body후에 실행되도록 하는법 -->
+<!-- 
+<script>
+	$(document).ready(function(){
+		// body까지 메모리에 로드 후 진행
+	});
+</script>
+ -->
 <head>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -17,19 +25,48 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<h1>staff login <span>${msg}</span></h1>
 
-	<form action="${pageContext.request.contextPath}/off/login" method="post">
-		<div class="mb-3 mt-3">
-			<label for="staffId" class="form-label">staffId:</label> 
-			<input type="text" class="form-control" id="staffId" name="staffId">
-		</div>
-		<div class="mb-3">
-			<label for="password" class="form-label">password:</label> 
-			<input type="password" class="form-control" id="password" name="password">
-		</div>
-		<button type="submint" class="btn btn-primary">로그인</button>
-	</form>
+	<div class="row mt-5 pt-5">
+	  <div class="col-sm-4"></div>
+	  	
+	  <div class="card col-sm-4">
+	  	<h1 class="mb-5 text-center card-header">Staff Login<span>${msg}</span></h1>
+	  	<form id="form" action="${pageContext.request.contextPath}/off/login" method="post">
+			<div class="mb-3 mt-3 card-body">
+				<label for="staffId" class="form-label">staffId:</label> 
+				<input id="staffId" name="staffId" type="text" class="form-control">
+			</div>
+			<div class="mb-3 card-body">
+				<label for="password" class="form-label">password:</label> 
+				<input id="password" name="password" type="password" class="form-control">
+			</div>
+			<button id="btn" type="button" class="btn btn-primary mb-3 card-footer">로그인</button>
+		</form>
+	  </div>
+	  
+	  <div class="col-sm-4"></div>
+	</div>
+	
+	
+
+	
 	
 </body>
+
+<script>
+	// btn 버튼 클릭시 폼값 유효성 검사
+	$('#btn').click(function() {
+		console.log('clik');
+		// 숫자가 아니면 isNaN() of $.isNumeric()
+		if($.isNumeric($('#staffId').val()) == false){
+			alert('staffId는 숫자만 입력 가능');
+		} else if($('#password').val().length < 4){
+			alert('password는 4자이상 가능');
+		} else {
+			$('#form').submit();
+		}
+	
+	});
+</script>
+
 </html>
