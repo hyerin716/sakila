@@ -8,7 +8,7 @@
 			address_id addressId
 			, address
 		FROM address
-		WHERE LOWER(address) LIKE LOWER(CONCAT('%', #{searchAddress}, '%'));
+		WHERE LOWER(address) LIKE LOWER(CONCAT('%', #{searchAddress}, '%'))
 		
 	</select>
 </mapper>
