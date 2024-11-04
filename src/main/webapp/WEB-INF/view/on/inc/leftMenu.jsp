@@ -29,7 +29,10 @@
 	</li>
 	
 	<li class="list-group-item bg-light">
-		<a href="">STAFF 추가</a>
+		<a href="${pageContext.request.contextPath}/on/staffList">STAFF 리스트</a>
+	</li>
+	<li class="list-group-item bg-light">
+		<a href="${pageContext.request.contextPath}/on/addStaff">STAFF 추가</a>
 	</li>
 	
 	<li class="list-group-item bg-light">
