@@ -78,7 +78,7 @@ public class StaffController {
 	@GetMapping("/on/staffList")
 	public String staffList(Model model
 								, @RequestParam(defaultValue = "1") int currentPage
-								, @RequestParam(defaultValue = "10") int rowPerPage) {	//(@RequestParam(defaultValue = "1") int currentPage: currnetPage가  null이면 문자열 1로 해준다
+								, @RequestParam(defaultValue = "2") int rowPerPage) {	//(@RequestParam(defaultValue = "1") int currentPage: currnetPage가  null이면 문자열 1로 해준다
 		// model(staffList)
 		Map<String, Object> map = new HashMap<>();
 		int beginRow = (currentPage - 1) * rowPerPage;
@@ -94,6 +94,8 @@ public class StaffController {
 		if(count % rowPerPage != 0 ) {
 			lastPage++;
 		}
+		log.debug("lastPage: " + lastPage);	// 디버깅	
+		
 		model.addAttribute("staffList", staffList);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("lastPage", lastPage);
