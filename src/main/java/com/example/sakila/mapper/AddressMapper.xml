@@ -9,6 +9,5 @@
 			, address
 		FROM address
 		WHERE LOWER(address) LIKE LOWER(CONCAT('%', #{searchAddress}, '%'))
-		
 	</select>
 </mapper>
