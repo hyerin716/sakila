@@ -6,9 +6,30 @@
 	<select id = "selectStaffOne" parameterType="int"
 			resultType="map">
 		<!-- 조인시 resultType은 java.util.Map -->
-		SELECT 
-			t4.*, t5.*
+SELECT
+   t4.staff_id staffId
+   , t4.first_name firstName
+   , t4.last_name lastName
+   , t4.email staffEmail
+   , t5.address staffAddress
+   , t5.address2 staffAddress2
+   , t5.district staffDistrict
+   , t5.postal_code staffPostalCode
+   , t5.phone StaffPhone
+   , t5.city staffCity
+   , t5.country staffCountry
+   , t4.store_id storeId
+   , t4.manager_staff_id managerfStaffId
+   , t4.manager_name managerName
+   , t4.address storeAddress
+   , t4.address2 storeAddress2
+   , t4.district storeDistrict
+   , t4.postal_code storePostCode
+   , t4.phone storePhone
+   , t4.city storeCity
+   , t4.country storeCountry
 FROM
+
 	(SELECT 
 		s.staff_id
 		, s.first_name

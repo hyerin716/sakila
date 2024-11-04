@@ -20,45 +20,107 @@
 		
 		<div class="col-sm-10">
 			<!-- main content -->
-			<h1 class="bg-light mt-3">STAFF 정보</h1>
-			<table class="mt-5 table">
-				
-				<tr>
-					<th>STAFF ID</th>
-					<td>${staff.staffId}</td>
-				</tr>
-				<tr>
-					<th>First Name</th>
-					<td>${staff.firstName}</td>
-				</tr>
-				<tr>
-					<th>Last Name</th>
-					<td>${staff.lastName}</td>
-				</tr>
-				<tr>
-					<th>Address ID</th>
-					<td>${staff.addressId}</td>
-				</tr>
-				<tr>
-					<th>email</th>
-					<td>${staff.email}</td>
-				</tr>
-				<tr>
-					<th>Store ID</th>
-					<td>${staff.storeId}</td>
-				</tr>
-				<tr>
-					<th>Store ID</th>
-					<td>${staff.storeId}</td>
-				</tr>
-				<tr>
-					<th>Username</th>
-					<td>${staff.username}</td>
-				</tr>
-				<tr>
-					<th>Last Update</th>
-					<td>${staff.lastUpdate}</td>
-				</tr>
+			<!-- STAFF 정보 -->
+         <h1 class="bg-light mt-3">STAFF 정보</h1>
+         <table class="mt-5 table">
+            <tr>
+               <th>STAFF ID</th>
+               <td>${staff.staffId}</td>
+            </tr>
+            <tr>
+               <th>First Name</th>
+               <td>${staff.firstName}</td>
+            </tr>
+            <tr>
+               <th>Last Name</th>
+               <td>${staff.lastName}</td>
+            </tr>
+            <tr>
+               <th>email</th>
+               <td>${staff.staffEmail}</td>
+            </tr>
+            
+         </table>
+         <!-- STAFF 주소지 정보 -->
+            <h1 class="bg-light mt-3">STAFF 주소지</h1>
+            <table class="mt-5 table">
+            <tr>
+               <th>Address</th>
+               <td>${staff.staffAddress}</td>
+            </tr>
+            <tr>
+               <th>Address2</th>
+               <td>${staff.staffAddress2}</td>
+            </tr>
+            <tr>
+               <th>District</th>
+               <td>${staff.staffDistrict}</td>
+            </tr>
+            <tr>
+               <th>Postal Code</th>
+               <td>${staff.staffPostalCode}</td>
+            </tr>
+            <tr>
+               <th>Phone</th>
+               <td>${staff.StaffPhone}</td>
+            </tr>
+            <tr>
+               <th>City</th>
+               <td>${staff.staffCity}</td>
+            </tr>
+            <tr>
+               <th>Country</th>
+               <td>${staff.staffCountry}</td>
+            </tr>      
+         </table>
+         <!-- STORE 정보 -->
+            <h1 class="bg-light mt-3">STORE 정보</h1>
+            <table class="mt-5 table">
+            <tr>
+               <th>STORE ID</th>
+               <td>${staff.storeId}</td>
+            </tr>
+            <tr>
+               <th>Manager Name STAFF ID</th>
+               <td>${staff.managerfStaffId}</td>
+            </tr>
+            <tr>
+               <th>Manager Name</th>
+               <td>${staff.managerName}</td>
+            </tr>   
+         </table>
+         <!-- STORE 주소지 -->
+            <h1 class="bg-light mt-3">STORE 주소지</h1>
+            <table class="mt-5 table">
+            <tr>
+               <th>STORE ID</th>
+               <td>${staff.storeAddress}</td>
+            </tr>
+            <tr>
+               <th>Manager Name STAFF ID</th>
+               <td>${staff.storeAddress2}</td>
+            </tr>
+            <tr>
+               <th>District</th>
+               <td>${staff.storeDistrict}</td>
+            </tr>   
+            <tr>
+               <th>Post Code</th>
+               <td>${staff.storePostCode}</td>
+            </tr>   
+            <tr>
+               <th>Phone</th>
+               <td>${staff.storePhone}</td>
+            </tr>   
+            <tr>
+               <th>City</th>
+               <td>${staff.storeCity}</td>
+            </tr>   
+            <tr>
+               <th>Country</th>
+               <td>${staff.storeCountry}</td>
+            </tr>   
+
 			</table>
 		</div>
 		
