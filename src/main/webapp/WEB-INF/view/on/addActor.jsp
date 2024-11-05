@@ -26,7 +26,7 @@
 				<table class="table">
 					<tr>
 						<td>First Name</td>
-						<td><input type="text" name="fistName"></td>
+						<td><input type="text" name="firstName"></td>
 					</tr>
 					<tr>
 						<td>Last Name</td>
