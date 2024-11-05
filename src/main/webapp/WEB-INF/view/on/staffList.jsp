@@ -56,35 +56,36 @@
 					</tr>
 				</c:forEach>
 			</table>
+				
+			<!-- 페이지네이션 -->
+			<div class="container text-center">
+			  <div class="row">
+			    <div class="col"></div>
+			    <div class="col">
+			      <nav aria-label="Page navigation example">
+					  <!-- 처음으로 -->
+					  <ul class="pagination">
+					    <li class="page-item">
+					    	<a class="page-link" href="${pageContext.request.contextPath}/on/staffList?currentPage=1" aria-label="Previous">
+					   			 <span aria-hidden="true">&laquo;</span>
+					   		</a>
+					    </li>
+					    <c:forEach var="i" begin="1" end="${lastPage}">
+				           <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/on/staffList?currentPage=${i}">${i}</a></li>
+				        </c:forEach>
+					    <!-- 마지막으로 -->
+					    <li class="page-item">
+					    	<a class="page-link" href="${pageContext.request.contextPath}/on/staffList?currentPage=${lastPage}" aria-label="Next">
+					    		 <span aria-hidden="true">&raquo;</span>
+					    	</a>
+					    </li>
+					  </ul>
+					</nav>
+			    </div>
+			    <div class="col"></div>
+			  </div>
+			</div>
 			
-			<a href="${pageContext.request.contextPath}/on/staffList?currentPage=1">처음</a>
-			<c:if test="${currentPage > 1}">
-				<a href="${pageContext.request.contextPath}/on/staffList?currentPage=${currentPage-1}">이전</a>		
-			</c:if>		
-			<c:if test="${currentPage < lastPage}">
-				<a href="${pageContext.request.contextPath}/on/staffList?currentPage=${currentPage+1}">다음</a>
-			</c:if>
-			<a href="${pageContext.request.contextPath}/on/staffList?currentPage=${lastPage}">마지막</a>		
-			
-			<nav aria-label="Page navigation example">
-			  <ul class="pagination">
-			    <li class="page-item">
-			    	<a class="page-link" href="${pageContext.request.contextPath}/on/staffList?currentPage=1" aria-label="Previous">
-			   			 <span aria-hidden="true">&laquo;</span>
-			   		</a>
-			    </li>
-			    <li class="page-item"><a class="page-link" href="#">1</a></li>
-			    <li class="page-item"><a class="page-link" href="#">2</a></li>
-			    <li class="page-item"><a class="page-link" href="#">3</a></li>
-			    
-			    
-			    <li class="page-item">
-			    	<a class="page-link" href="${pageContext.request.contextPath}/on/staffList?currentPage=${lastPage}" aria-label="Next">
-			    		 <span aria-hidden="true">&raquo;</span>
-			    	</a>
-			    </li>
-			  </ul>
-			</nav>
 			
 		</div>
 	</div>
