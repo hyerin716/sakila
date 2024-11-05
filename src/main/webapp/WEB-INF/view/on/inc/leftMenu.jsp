@@ -17,11 +17,11 @@
 	</li>
 	
 	<li class="list-group-item bg-light">
-		<a href="">지점 추가</a>
+		<a href="">지점 리스트</a>
 	</li>
 	
 	<li class="list-group-item bg-light">
-		<a href="">지점 수정</a>
+		<a href="">지점 추가</a>
 	</li>
 	
 	<li class="list-group-item bg-light fw-bold">
