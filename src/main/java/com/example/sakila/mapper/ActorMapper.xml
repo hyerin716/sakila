@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sakila.mapper.ActorMapper">
+	<insert id="insertActor" parameterType="com.example.sakila.vo.Actor">
+		<selectKey resultType="int" keyProperty="actorId" order="AFTER">
+			SELECT LAST_INSERT_ID()	<!-- 마지막으로 삽입된 AUTO_INCREMENT값을 반환하는 함수 -->
+		</selectKey>
+		
+		INSERT INTO actor (first_name, last_name) VALUES (#{firstName}, #{lastName})
+	</insert>
+</mapper>
+
+<!-- 
+	<selectKey>는 주로 insert 후, 자동으로 생성된 키를 가져오는데 사용됨
+	selectKey 쿼리의 결과 타입 : 'actorId'속성에 int로 지정됨
+	order="AFTER" : selectKey 쿼리가 insert 쿼리 실행 후에 실행되도록 지정함. 
+					ㄴ 레코드가 삽입된 후에 actorId 값을 가져오게 됨
+					
+
+ -->
