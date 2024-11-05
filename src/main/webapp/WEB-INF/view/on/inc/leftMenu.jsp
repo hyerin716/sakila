@@ -8,9 +8,7 @@
 	<li class="list-group-item bg-light">
 		<a href="${pageContext.request.contextPath}/on/staffOne">${loginStaff.username}님</a>
 	</li>
-	<li class="list-group-item bg-light">
-		<a href="${pageContext.request.contextPath}/on/logout">로그아웃</a>
-	</li>
+	
 	
 	<li class="list-group-item bg-light fw-bold">
 		::: 지점 관리 :::
@@ -57,5 +55,7 @@
 		<a href="${pageContext.request.contextPath}/on/addActor">배우 추가</a>
 	</li>
 	
-	
+	<li class="list-group-item bg-light btn-danger">
+		<a href="${pageContext.request.contextPath}/on/logout" class="btn btn-danger">로그아웃</a>
+	</li>
 </ul>

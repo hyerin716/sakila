@@ -49,8 +49,8 @@
 						<td>${s.active}</td>
 						<td>
 							<a href="${pageContext.request.contextPath}/on/modifyStaffActive?staffId=${s.staffId}&active=${s.active}" class="btn btn-primary">
-								<c:if test="${s.active == 1}">사용금지(2)로 변경</c:if>
-								<c:if test="${s.active == 2}">사용가능(1)으로 변경</c:if>
+								<c:if test="${s.active == 1}">비활성화</c:if>
+								<c:if test="${s.active == 2}">활성화</c:if>
 							</a>
 						</td>
 					</tr>
