@@ -38,11 +38,16 @@ public class ActorController {
 		log.debug(actor.toString());
 		log.debug(actorFileList.toString());
 		log.debug(filmList.toString());
-				
+		
+		model.addAttribute("actor", actor);
+		model.addAttribute("actorFileList", actorFileList);
+		model.addAttribute("filmList", filmList);
+		
 		return "on/actorOne";
 	}
 	
 	
+	// actor list 출력
 	@GetMapping("/on/actorList")
 	public String actorList(Model model
 							,@RequestParam(defaultValue = "1") int currentPage
