@@ -1,7 +1,9 @@
 package com.example.sakila.service;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,32 @@ import lombok.extern.slf4j.Slf4j;
 public class ActorService {
 	@Autowired ActorMapper actorMapper;
 	@Autowired ActorFileMapper actorFileMapper;
+	
+	// 라스트페이지 구하기
+	public int getLastPage(int rowPerPage, String searchWord) {
+		int count = actorMapper.selectActorCount(searchWord);
+		int lastPage = count / rowPerPage;
+		if(count % rowPerPage !=0 ) {
+			lastPage++;
+		}
+		System.out.println("카운트" + count);
+		System.out.println("로퍼페이지" + rowPerPage);
+		System.out.println("라스트페이지계산 count / rowPerPage " + count / rowPerPage);
+		System.out.println("라스트페이지" + lastPage);
+		return lastPage;
+	}
+	
+	// 배우 리스트 출력
+	public List<Actor> getActorList(int currentPage, int rowPerPage, String searchWord) {
+		Map<String, Object> paramMap = new HashMap<>();
+		int beginRow = (currentPage-1) * rowPerPage;
+		paramMap.put("beginRow", beginRow);
+		paramMap.put("rowPerPage", rowPerPage);
+		paramMap.put("searchWord", searchWord);
+		
+		
+		return actorMapper.selectActorList(paramMap);
+	}
 	
 	// 배우 추가
 	public void addActor(ActorForm actorForm, String path) {
