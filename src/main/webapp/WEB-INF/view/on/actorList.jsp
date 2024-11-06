@@ -73,17 +73,17 @@
 						  <!-- 처음으로 -->
 						  <ul class="pagination">
 						    <li class="page-item">
-						    	<a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=1" aria-label="Previous">
-						   			 <span aria-hidden="true">&laquo;</span>
+						    	<a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=1&searchWord=${searchWord}" aria-label="Previous">
+						   			 <span aria-hidden="true"><<</span>
 						   		</a>
 						    </li>
 						    <c:forEach var="i" begin="1" end="${lastPage}">
-					           <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=${i}">${i}</a></li>
+					           <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=${i}&searchWord=${searchWord}">${i}</a></li>
 					        </c:forEach>
 						    <!-- 마지막으로 -->
 						    <li class="page-item">
-						    	<a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=${lastPage}" aria-label="Next">
-						    		 <span aria-hidden="true">&raquo;</span>
+						    	<a class="page-link" href="${pageContext.request.contextPath}/on/actorList?currentPage=${lastPage}&searchWord=${searchWord}" aria-label="Next">
+						    		 <span aria-hidden="true">>></span>
 						    	</a>
 						    </li>
 						  </ul>
