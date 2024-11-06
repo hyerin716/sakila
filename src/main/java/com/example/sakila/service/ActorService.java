@@ -26,6 +26,11 @@ public class ActorService {
 	@Autowired ActorMapper actorMapper;
 	@Autowired ActorFileMapper actorFileMapper;
 	
+	// /on/actorOne
+	public Actor getActorOne(int actorId) {
+		return actorMapper.selectActorOne(actorId);
+	}
+	
 	// 라스트페이지 구하기
 	public int getLastPage(int rowPerPage, String searchWord) {
 		int count = actorMapper.selectActorCount(searchWord);
