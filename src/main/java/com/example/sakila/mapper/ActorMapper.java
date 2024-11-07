@@ -9,6 +9,9 @@ import com.example.sakila.vo.Actor;
 
 @Mapper
 public interface ActorMapper {
+
+	// //on/actorOne -> actor 수정
+	Actor modifyActor(int actorId);
 	
 	// /on/filmOne -> 해당 작품에 출연한 배우들 출력
 	List<Actor> selectActorListByFilm(int filmId); 

@@ -28,6 +28,16 @@ public class ActorController {
 	@Autowired ActorFileService actorFileService;
 	@Autowired FilmService filmService;
 	
+	// actorOne 수정
+	@GetMapping("/on/modifyActor")
+	public String modifyActor(Model model, @RequestParam int actorId) {
+		Actor actor = actorService.getModifyActor(actorId);
+		log.debug(actor.toString()); // 디버깅
+		
+		model.addAttribute("actor", actor);
+		
+		return "on/modifyActor";
+	}
 	
 	// actorOne 상세페이지 출력
 	@GetMapping("/on/actorOne")
