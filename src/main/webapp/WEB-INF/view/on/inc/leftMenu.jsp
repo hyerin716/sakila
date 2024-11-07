@@ -3,7 +3,7 @@
 
 <ul class="list-group text-center bg-light">
 	<li class="list-group-item bg-light">
-		<a href="${pageContext.request.contextPath}/on/main">홈으로</a>
+		<a href="${pageContext.request.contextPath}/on/main" class="btn">홈으로</a>
 	</li>
 	<li class="list-group-item bg-light">
 		<a href="${pageContext.request.contextPath}/on/staffOne">${loginStaff.username}님</a>

@@ -10,6 +10,9 @@ import com.example.sakila.vo.Film;
 @Mapper
 public interface FilmMapper {
 	
+	// leftmenu.jsp -> 영화추가
+	int insertFilm(Film film);
+	
 	// /on/filmOne 출력 -> film X language
 	Map<String, Object> selectFilmOne(int filmId);
 	

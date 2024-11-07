@@ -26,16 +26,20 @@ public class FilmController {
 	@Autowired ActorService actorService;
 	@Autowired LanguageService languageService;
 	
+	// leftMenu -> 영화추가(addFilm.jsp)
 	@PostMapping("/on/addFilm")
 	public String addFilm(FilmForm filmForm) {
 		log.debug(filmForm.toString());
 		
 		// filmService : FilmForm -> Film
+		filmService.addFilm(filmForm);
+		
 		return "redirect:/on/filmList";
 	}
 	
 	
-	// leftMenu -> 영화추가에서 language 선택하기 위해서 languageList 필요
+	// leftMenu -> 영화추가(addFilm.jsp) 
+	//				-> language 선택필요 languageList 같이 넘김
 	@GetMapping("/on/addFilm")
 	public String addFilm(Model model) {
 		// languageList 필요
