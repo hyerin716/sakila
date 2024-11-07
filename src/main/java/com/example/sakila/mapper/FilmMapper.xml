@@ -31,6 +31,7 @@
 		)
 	</insert>
 	
+	<!-- filmOne 정보 출력 -->
 	<select id="selectFilmOne" parameterType="int" resultType="Map">
 		SELECT 
 			fi.film_id filmId

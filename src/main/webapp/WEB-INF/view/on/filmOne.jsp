@@ -20,11 +20,63 @@
 		
 		<div class="col-sm-10">
 			<!-- main content -->
-			<h1>FILM ONE</h1>
+			<h1>FILM ONE (영화 정보)</h1>
 			<div>
-				${film} 
-				<br>
-				filmONe 구현하기 과제
+				<table class="table" style="width: 80%;">
+					<tr>
+						<td>filmId</td>
+						<td>${film.filmId}</td>
+					</tr>
+					<tr>
+						<td>title</td>
+						<td>${film.title}</td>
+					</tr>
+					<tr>
+						<td>description</td>
+						<td>${film.description}</td>
+					</tr>
+					<tr>
+						<td>releaseYear</td>
+						<td>${film.releaseYear}</td>
+					</tr>
+					<tr>
+						<td>rentalDuration</td>
+						<td>${film.rentalDuration}</td>
+					</tr>
+					<tr>
+						<td>rentalRate</td>
+						<td>${film.rentalRate}</td>
+					</tr>
+					<tr>
+						<td>length</td>
+						<td>${film.length}</td>
+					</tr>
+					<tr>
+						<td>replacementCost</td>
+						<td>${film.replacementCost}</td>
+					</tr>
+					<tr>
+						<td>rating</td>
+						<td>${film.rating}</td>
+					</tr>
+					<tr>
+						<td>specialFeatures</td>
+						<td>${film.specialFeatures}</td>
+					</tr>
+					<tr>
+						<td>lastUpdate</td>
+						<td>${film.lastUpdate}</td>
+					</tr>
+					<tr>
+						<td>originalLanguageId</td>
+						<td>${film.originalLanguageId}</td>
+					</tr>
+					<tr>
+						<td>language</td>
+						<td>${film.language}</td>
+					</tr>
+				</table> 
+				
 			</div>
 			<div>
 				<a href="">영화 수정</a>

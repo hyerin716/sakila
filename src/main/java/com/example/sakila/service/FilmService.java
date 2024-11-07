@@ -16,6 +16,7 @@ import com.example.sakila.vo.FilmForm;
 public class FilmService {
 	@Autowired FilmMapper filmMapper;
 	
+	// addFilm 영화추가
 	public int addFilm(FilmForm filmForm) {
 		Film film = new Film();
 		// FilmForm ---> Film

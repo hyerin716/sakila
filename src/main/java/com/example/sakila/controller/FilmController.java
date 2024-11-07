@@ -49,7 +49,7 @@ public class FilmController {
 		return "on/addFilm";
 	}
 	
-	
+	// filmOne 페이지 출력
 	@GetMapping("/on/filmOne")
 	public String filmOne(Model model
 						, @RequestParam int filmId) {
