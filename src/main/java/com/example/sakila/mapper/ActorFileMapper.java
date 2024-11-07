@@ -8,8 +8,9 @@ import com.example.sakila.vo.ActorFile;
 
 @Mapper
 public interface ActorFileMapper {
-
-	// /on/actorOne 
+	// 
+	
+	// /on/actorOne -> actor file 출력
 	List<ActorFile> selectActorFileListByActor(int actorId);
 	
 	// actor 파일 추가

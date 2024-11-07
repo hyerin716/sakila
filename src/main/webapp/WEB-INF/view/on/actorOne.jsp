@@ -42,10 +42,12 @@
 				</tr>
 			</table>
 			<div>
-				<a href="">actor 수정</a>
+				<a href="${pageContext.request.contextPath}/on/modifyActor">
+					actor 수정 [과제 : 입력폼, 액션, 서비스, 맵퍼]
+				</a>
 			</div>
 			
-			
+			<br>
 			<!-- ACTOR FILE -->
 			<h2>ACTOR FILE</h2>
 			<table class="table">
@@ -64,12 +66,15 @@
 						<td>${af.type}</td>
 						<td>${af.size} Byte</td>
 						<td>${af.createDate}</td>
-						<td><a href="">삭제</a></td>
+						<td><a href="" class="btn btn-warning">삭제</a></td>
 					</tr>
 				</c:forEach>
 			</table>
 			<div>
-				<a href="">이미지파일 추가</a>
+				<a href="${pageContext.request.contextPath}/on/addActorFile?actorId=${actor.actorId}" 
+				class="btn btn-success">
+					이미지파일 추가
+				</a>
 			</div>
 			
 			<!-- FILM-->

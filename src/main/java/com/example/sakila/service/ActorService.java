@@ -26,6 +26,11 @@ public class ActorService {
 	@Autowired ActorMapper actorMapper;
 	@Autowired ActorFileMapper actorFileMapper;
 	
+	// /on/filmOne -> 해당 작품에 출연한 배우들 출력
+	public List<Actor> getActorListByFilm(int filmId) {
+		return actorMapper.selectActorListByFilm(filmId);
+	}
+	
 	// /on/actorOne
 	public Actor getActorOne(int actorId) {
 		return actorMapper.selectActorOne(actorId);

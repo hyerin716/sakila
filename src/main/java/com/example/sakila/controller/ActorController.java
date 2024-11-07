@@ -28,11 +28,14 @@ public class ActorController {
 	@Autowired FilmService filmService;
 	
 	
+	// actorOne 상세페이지 출력
 	@GetMapping("/on/actorOne")
 	public String actorOne(Model model, 
 								@RequestParam int actorId) {
 		Actor actor = actorService.getActorOne(actorId);
+		// actor file 출력
 		List<ActorFile> actorFileList = actorFileService.getActorFileListByActor(actorId);
+		
 		List<Film> filmList = filmService.getFilmTitleListByActor(actorId);
 		
 		log.debug(actor.toString());

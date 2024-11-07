@@ -20,17 +20,14 @@
 		
 		<div class="col-sm-10">
 			<!-- main content -->
-			<h1>ADD ACTOR</h1>
-			<form id="formActor" action="${pageContext.request.contextPath}/on/addActor" method="post"
-					enctype="multipart/form-data">
+			<h1>ACTOR FILE ADD</h1>
+			<form id="formAddActorFile" method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/on/addActorFile">
 				<table class="table">
 					<tr>
-						<td>First Name</td>
-						<td><input type="text" name="firstName"></td>
-					</tr>
-					<tr>
-						<td>Last Name</td>
-						<td><input type="text" name="lastName"></td>
+						<td>actorId</td>
+						<td>
+							<input type="text" name="actorId" value="${actorId}" readonly>
+						</td>
 					</tr>
 					<tr>
 						<td>file</td>
@@ -38,33 +35,29 @@
 							<div id="fileDiv">					
 								<button type="button" id="btnAddFile">파일폼 추가</button>
 								<button type="button" id="btnRemoveFile">파일폼 삭제</button>
+								<input type="file" name="actorFile" class="actorFile">
 							</div>
-						</td>
+						</td>						
 					</tr>
 				</table>
-				<button type="button" id="btnAddActor">배우 추가</button>
+				<button id="btnAddActorFile" type="button">액터파일추가</button>
 			</form>
 		</div>
 	</div>
 	
 </body>
-	
-
-
 <script>
-	// 배우추가 버튼 클릭시
-	
-	$('#btnAddActor').click(function(){
-		if($('#firstName').val() == '' || $('#lastName').val() == ''){
-			alert('이름을 입력하세요');
-		} else if($('.actorFile').length > 0 && $('.actorFile').last().val() == '') { 
-			alert('첨부하지 않은 파일이 이미 존재합니다');
-		} else{
-			$('#formActor').submit();			
+	$('#btnAddActorFile').click(function(){
+		if($('.actorFile').length ==0){
+			alert('첨부할 파일이 없습니다.');
+		} else if ($('.actorFile').last().val() == '') {
+			alert('첨부되지 않은 파일이 있습니다.');
+		} else {
+			$('#formAddActorFile').submit();
 		}
 	});
-	
-	// 파일추가 버튼 클릭시
+
+	//파일추가 버튼 클릭시
 	$("#btnAddFile").click(function() {
 		if($('.actorFile').last().val() == '') { // 마지막 input=file값이 공백이라면
 			alert('첨부하지 않은 파일이 이미 존재합니다');
@@ -82,6 +75,5 @@
 			$('.actorFile').last().remove();
 		}
 	});
-	
 </script>
 </html>

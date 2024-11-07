@@ -21,8 +21,30 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<h1>FILM ONE</h1>
+			<div>
+				${film} 
+				<br>
+				filmONe 구현하기 과제
+			</div>
+			<div>
+				<a href="">영화 수정</a>
+			</div>
+			
+			<br>
+			<div>
+				<h2>작품에 출연한 배우들</h2>
+				<div>
+					<c:forEach var="a" items="${actorList}">
+						<div>
+							<a href="${pageContext.request.contextPath}/on/actorOne?actorId=${a.actorId}">
+								${a.firstName} ${a.lastName}
+							</a>
+						</div>
+					</c:forEach>
+					
+				</div>
+			</div>
 		</div>
 	</div>
-	
 </body>
 </html>
