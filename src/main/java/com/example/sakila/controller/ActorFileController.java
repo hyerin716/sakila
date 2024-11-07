@@ -19,24 +19,32 @@ import jakarta.servlet.http.HttpSession;
 public class ActorFileController {
 	@Autowired ActorFileService actorFileService;
 	
+
+	@PostMapping("/on/addActorFile")
+	public String addActorFile(HttpSession session, Model model, ActorForm actorForm) {
+		// 이미지 파일만 등록 가능하도록
+		List<MultipartFile> list = actorForm.getActorFile();
+		for(MultipartFile f : list) {	// 이미지파일은 *.jpg or *.png 가능
+			if(f.getContentType().equals("image/jpeg")==false
+					&& f.getContentType().equals("image/png")==false) {
+				model.addAttribute("msg","이미지 파일만 입력이 가능합니다.");
+				model.addAttribute("actorId",actorForm.getActorId());
+				
+				return "on/addActorFile";
+			}
+		}
+				
+		String path= session.getServletContext().getRealPath("/upload/");
+		actorFileService.addActorFile(actorForm, path);
+		return "redirect:/on/actorOne?actorId="+ actorForm.getActorId();
+	}
+
+	
 	@GetMapping("/on/addActorFile")
 	public String addActorFile(Model model, @RequestParam int actorId) {
 		model.addAttribute("actorId", actorId);
 		return "on/addActorFile";
 	}
 	
-	@PostMapping("/on/addActorFile")
-	public String addActorFile(HttpSession session, /*Model model,*/ ActorForm actorForm) {
-		/*List<MultipartFile> list = actorForm.getActorFile();
-		for(MultipartFile f :list) {
-			if(f.getContentType().equals("imgage/jpeg") == false) {
-				model.
-			}
-		}*/
-		
-		String path= session.getServletContext().getRealPath("/upload/");
-		actorFileService.addActorFile(actorForm, path);
-		return "redirect:/on/actorOne?actorId="+ actorForm.getActorId();
-	}
+	
 }
-
