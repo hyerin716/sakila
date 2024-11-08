@@ -18,6 +18,20 @@ import com.example.sakila.vo.ActorForm;
 public class ActorFileService {
 	@Autowired ActorFileMapper actorFileMapper;
 	
+	// /on/removeActorFile
+	// 1) actor_file 삭제, 2) 물리 파일 삭제(이름이 필요, 경로PATH 필요)
+	public void removeActorFile(int actorFileId, String path) {
+		// 1) 파일이름 select
+		ActorFile actorFile = actorFileMapper.selectActorFileOne(actorFileId); // filename, 확장자 구하기 위해서
+		int row = actorFileMapper.deleteActorFile(actorFileId);
+		if(row == 1) {	// actor_file 정보 삭제가 되었다면 물리적 파일삭제
+			String fullname = path + actorFile.getFilename() + "." + actorFile.getExt();	// 삭제하고자 하는 파일 풀네임
+			File f = new File(fullname);	// 없으면 새로 만들어지고 있으면 기존 파일과 연결한다
+			f.delete();
+		}
+		
+	}
+	
 	// /on/addActorFile
 	public void addActorFile(ActorForm actorForm, String path) {
 		 if(actorForm.getActorFile() != null) {

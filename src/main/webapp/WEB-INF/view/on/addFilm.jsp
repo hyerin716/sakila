@@ -87,16 +87,9 @@
 						<td colspan="2" class="fw-bold">선택적 항목</td>
 					</tr>
 					<tr>
-						<td>description</td>
+						<td>length</td>
 						<td>
-							<!-- textarea -->
-							<textarea rows="3" cols="50" id="description" name="description"></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>releaseYear</td>
-						<td>
-							<input  type="number" id="releaseYear" name="releaseYear">
+							<input type="number" id="length" name="length">분
 						</td>
 					</tr>
 					<tr>
@@ -111,9 +104,9 @@
 						</td>
 					</tr>
 					<tr>
-						<td>length</td>
+						<td>releaseYear</td>
 						<td>
-							<input type="number" id="length" name="length">분
+							<input  type="number" id="releaseYear" name="releaseYear">
 						</td>
 					</tr>
 					<tr>
@@ -130,6 +123,13 @@
 								value="Deleted Scenes">Deleted Scenes
 							<input type="checkbox" id="specialFeatures" name="specialFeatures" 
 								value="Behind the Scenes">Behind the Scenes
+						</td>
+					</tr>
+					<tr>
+						<td>description</td>
+						<td>
+							<!-- textarea -->
+							<textarea rows="3" cols="50" id="description" name="description"></textarea>
 						</td>
 					</tr>
 				</table>

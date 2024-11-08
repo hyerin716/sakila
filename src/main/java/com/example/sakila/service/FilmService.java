@@ -22,9 +22,9 @@ public class FilmService {
 		// FilmForm ---> Film
 		film.setTitle(filmForm.getTitle());
 		if(filmForm.getDescription().equals("")) {
-			filmForm.setDescription(null);
+			film.setDescription(null);
 		} else {
-			filmForm.setDescription(filmForm.getDescription());
+			film.setDescription(filmForm.getDescription());
 		}
 		// 삼항연산자 사용하면
 		// film.setDescription(filmForm.getDescription().equals("") ? null : filmForm.getDescription());
