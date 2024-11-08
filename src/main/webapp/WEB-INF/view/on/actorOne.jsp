@@ -21,7 +21,7 @@
 		<!-- ●
 			● 1) actor 상세
 			● 1-1) actor 수정 - /on/modifyActor
-			1-2) actor 삭제 - /on/removeActor (actor_file 삭제 + film_actor삭제 + actor 삭제)
+			● 1-2) actor 삭제 - /on/removeActor (actor_file 삭제 + film_actor삭제 + actor 삭제)
 			
 			● 2) actor_file 리스트
 			● 2-1) actor_file 추가

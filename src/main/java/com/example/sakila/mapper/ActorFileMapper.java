@@ -9,6 +9,9 @@ import com.example.sakila.vo.ActorFile;
 @Mapper
 public interface ActorFileMapper {
 	
+	// /on/removeActor : /on/actrOne에서 actor 삭제 시 actor file도 삭제
+	int deleteActorFileByActor(int actorId);
+	
 	// [Service]에서 필요, on/removeActorFile -> 물리적 파일 삭제하기 위해서 filename, 확장자 구하는 메서드
 	ActorFile selectActorFileOne(int actorFileId);
 	

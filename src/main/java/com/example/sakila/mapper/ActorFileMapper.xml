@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.ActorFileMapper">
 
+	<!-- /on/actrOne에서 actor 삭제 시 actor file도 삭제 -->
+	<!-- 동일 Actor의 모든 파일 삭제 -->
+	<delete id="deleteActorFileByActor" parameterType="int">
+		DELETE FROM actor_file
+		WHERE actor_id = #{actorId}
+	</delete>
+
 	<!-- [Service]에서 필요, on/removeActorFile : 물리적 파일 삭제하기 위해서 filename, 확장자 구하기 -->
 	<select id="selectActorFileOne" parameterType="int" resultType="com.example.sakila.vo.ActorFile">
 		SELECT

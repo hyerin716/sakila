@@ -28,6 +28,14 @@ public class ActorController {
 	@Autowired ActorFileService actorFileService;
 	@Autowired FilmService filmService;
 	
+	// actorOne : actor 삭제
+	@GetMapping("/on/removeActor")
+	public String removeActor(HttpSession session, @RequestParam int actorId) {
+		String path = session .getServletContext().getRealPath("/upload/");
+		actorService.removeActor(actorId, path);
+		return "redirect:/on/actorList";
+	}
+	
 	// actorOne 수정 : modifyActor.jsp에서 받아오기
 	@PostMapping("/on/modifyActor")
 	public String modifyActor(Actor actor) {
