@@ -41,17 +41,28 @@ public class ActorController {
 	
 	// actorOne 상세페이지 출력
 	@GetMapping("/on/actorOne")
-	public String actorOne(Model model, 
-								@RequestParam int actorId) {
+	public String actorOne(Model model
+								, @RequestParam int actorId
+								, @RequestParam(defaultValue = "") String searchTitle) {	
+		//searchWord = "" 이면 actorOne 상세보기 요청이고, ""이 아니면 film 검색 요청
 		Actor actor = actorService.getActorOne(actorId);
 		// actor file 출력
 		List<ActorFile> actorFileList = actorFileService.getActorFileListByActor(actorId);
-		
+		// /on/actorOne -> 출연작품 출력
 		List<Film> filmList = filmService.getFilmTitleListByActor(actorId);
+		//filmList -> 이미 내출연작
 		
 		log.debug(actor.toString());
 		log.debug(actorFileList.toString());
 		log.debug(filmList.toString());
+		
+		// searchTitle이 있다면 -> film 검색시 불러오는 filmList 출력
+		if(!searchTitle.equals("")) {	//searchTitle가 공백이 아니라면 (film 제목 검색어가 있다면)
+			// film 검색결과를 리스트에 추가
+			List<Film> searchFilmList = filmService.getFilmListByTitle(searchTitle);
+			model.addAttribute("searchFilmList", searchFilmList);
+			// searchFilmList -> film 을 추가하기위해서 출력하는 리스트
+		}
 		
 		model.addAttribute("actor", actor);
 		model.addAttribute("actorFileList", actorFileList);
