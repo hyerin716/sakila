@@ -3,9 +3,17 @@
 <mapper namespace="com.example.sakila.mapper.ActorMapper">
 	
 	<!-- /on/actorOne -> actor 수정 -->
-	<update id="modifyActor">
-	
-	
+	<update id="updateActor" parameterType="com.example.sakila.vo.Actor">
+		UPDATE actor
+		<set>
+			<if test="firstName != null">
+				first_name = #{firstName}
+			</if>
+			<if test="lastName != null">
+				last_name = #{lastName}
+			</if>
+		</set>
+		WHERE actor_id = #{actorId}
 	</update>
 	
 	<!-- /on/filmOne -->
@@ -21,6 +29,7 @@
 		WHERE fa.film_id = #{filmId}
 	</select>
 
+	<!-- actorOne 정보 출력 -->
 	<select id="selectActorOne" parameterType="int" resultType="com.example.sakila.vo.Actor">
 		SELECT 
 			actor_id actorId

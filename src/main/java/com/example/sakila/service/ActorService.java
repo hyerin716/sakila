@@ -26,9 +26,9 @@ public class ActorService {
 	@Autowired ActorMapper actorMapper;
 	@Autowired ActorFileMapper actorFileMapper;
 	
-	// on/actorOne -> actor 수정
-	public Actor getModifyActor(int actorId) {
-		return actorMapper.modifyActor(actorId);
+	// /on/modifyActor : on/actorOne -> actor 수정
+	public int modifyActor(Actor actor) {
+		return actorMapper.updateActor(actor);
 	}
 	
 	// /on/filmOne -> 해당 작품에 출연한 배우들 출력
@@ -36,7 +36,7 @@ public class ActorService {
 		return actorMapper.selectActorListByFilm(filmId);
 	}
 	
-	// /on/actorOne
+	// /on/actorOne -> actorOne 정보 출력
 	public Actor getActorOne(int actorId) {
 		return actorMapper.selectActorOne(actorId);
 	}

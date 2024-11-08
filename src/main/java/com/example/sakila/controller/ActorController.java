@@ -28,13 +28,23 @@ public class ActorController {
 	@Autowired ActorFileService actorFileService;
 	@Autowired FilmService filmService;
 	
-	// actorOne 수정
+	// actorOne 수정 : modifyActor.jsp에서 받아오기
+	@PostMapping("/on/modifyActor")
+	public String modifyActor(Actor actor) {
+		log.debug(actor.toString());
+		
+		int row = actorService.modifyActor(actor);
+		return "redirect:/on/actorOne?actorId=" + actor.getActorId();
+	}
+	
+	// actorOne 수정 -> modifyActor.jsp로 보내기
 	@GetMapping("/on/modifyActor")
 	public String modifyActor(Model model, @RequestParam int actorId) {
-		Actor actor = actorService.getModifyActor(actorId);
-		log.debug(actor.toString()); // 디버깅
-		
+		// 원래 정보(actorOne) 보여줘야함
+		Actor actor = actorService.getActorOne(actorId);
 		model.addAttribute("actor", actor);
+		
+		log.debug(actor.toString()); // 디버깅
 		
 		return "on/modifyActor";
 	}

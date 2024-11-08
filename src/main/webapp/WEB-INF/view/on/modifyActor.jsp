@@ -20,11 +20,47 @@
 		
 		<div class="col-sm-10">
 			<!-- main content -->
-			<h1>Actor 수정</h1>
-			
-			
+			<h1>Actor 수정(MODIFY ACTOR)</h1>
+			<table clss="table">
+				<tr>
+					<td>firstName</td>
+					<td>
+						<form id="formFirstName" action="${pageContext.request.contextPath}/on/modifyActor" method="post">
+							<input type="hidden" name="actorId" value="${actor.actorId}">
+							<input type="text" name="firstName" id="firstName" value="${actor.firstName}">
+							<button type="button" id="btnFirstName">firstName 수정</button>
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>lastName</td>
+					<td>
+						<form id="formLastName" action="${pageContext.request.contextPath}/on/modifyActor" method="post">
+							<input type="hidden" name="actorId" value="${actor.actorId}">
+							<input type="text" name="lastName" id="lastName" value="${actor.lastName}">
+							<button type="button" id="btnLastName">lastName 수정</button>
+						</form>
+					</td>
+				</tr>
+			</table>		
 		</div>
-	</div>
-	
+	</div>	
 </body>
+<script>
+	$('#btnFirstName').click(function(){
+		if($('#firstName').val() == ''){
+			alert('수정할 firstName을 입력하세요');
+		} else {
+			$('#formFirstName').submit();
+		}
+	});
+	
+	$('#btnLastName').click(function(){
+		if($('#lastName').val() == ''){
+			alert('수정할 lastName을 입력하세요');
+		} else {
+			$('#formLastName').submit();
+		}
+	});
+</script>
 </html>

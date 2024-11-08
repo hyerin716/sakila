@@ -11,12 +11,12 @@ import com.example.sakila.vo.Actor;
 public interface ActorMapper {
 
 	// //on/actorOne -> actor 수정
-	Actor modifyActor(int actorId);
+	int updateActor(Actor actor);
 	
 	// /on/filmOne -> 해당 작품에 출연한 배우들 출력
 	List<Actor> selectActorListByFilm(int filmId); 
 	
-	// /on/actorOne
+	// /on/actorOne : actorOne 정보 출력
 	Actor selectActorOne(int actorId);	
 	
 	// 페이징을 위해 전체 Actor 수 구하기 
