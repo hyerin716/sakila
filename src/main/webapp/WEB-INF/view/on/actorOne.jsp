@@ -25,12 +25,12 @@
 			
 			● 2) actor_file 리스트
 			● 2-1) actor_file 추가
-			● 2-2) actor_file 삭제 /on/removeActorFile
+			● 2-2) actor_file 삭제 /on/removeActorFile  
 			
 			액터쪽에서 필름 추가
 			● 3) film_actor 리스트
-			3-1) film_actor 추가 /on/addFilmByActor -> 필름 검색 후 선택
-			3-2) film_actor 삭제 /on/removeFilmActor
+			● 3-1) film_actor 추가 /on/addFilmByActor -> 필름 검색 후 선택
+			● 3-2) film_actor 삭제 /on/removeFilmActor
 			
 		 -->
 		
@@ -97,10 +97,38 @@
 			<!-- FILM-->
 			<div>
 				<h2>출연 작품</h2>
+				
+				<div>
+					<!-- 출연작 추가 -->
+					<form id="formSearchFilm" method="get" action="${pageContext.request.contextPath}/on/actorOne"> <!-- 영화검색 -->
+						<!-- film 검색시 actorId와 같이 전송  -->
+						<input  type="hidden" name="actorId" value="${actor.actorId}">
+						<input type="text" name="searchTitle">
+						<button id="btnSearchFilm" type="button">film 검색</button>
+					</form>
+					
+					<form id="formAddFilm" method="post"
+								action="${pageContext.request.contextPath}/on/addFilmByActor">
+						<input  type="hidden" name="actorId" value="${actor.actorId}">									
+						<select size="5" name="filmId">
+							<c:forEach var="sf" items="${searchFilmList}">
+								<option value="${sf.filmId}">${sf.title}</option>
+							</c:forEach>
+						</select>
+						<button id="btnAddFilm" type="button">film 추가</button>
+					</form>
+				</div>
+				<br>
+				
+				<!-- 출연작품 리스트 출력 -->
 				<c:forEach var="f" items="${filmList}">
 					<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${f.filmId}">
 						${f.title}
-					</a> &nbsp;
+					</a> 
+					&nbsp;
+					<a href="${pageContext.request.contextPath}/on/removeFilmActor?filmId=${f.filmId}&actorId=${actor.actorId}" 
+						class="btn btn-danger">film_actor에서 삭제</a>
+					<!-- 삭제시 filmId와 actorId가 PK이므로 f.filmId & actor.actorId 필요 -->
 				</c:forEach>
 			</div>
 			
@@ -108,4 +136,16 @@
 	</div>
 	
 </body>
+
+<script>
+	// film title 검색하는 버튼
+	$('#btnSearchFilm').click(function(){
+		$('#formSearchFilm').submit();
+	});
+	
+	// 출연작(film) 추가하는 버튼
+	$('#btnAddFilm').click(function(){
+		$('#formAddFilm').submit();
+	});
+</script>
 </html>

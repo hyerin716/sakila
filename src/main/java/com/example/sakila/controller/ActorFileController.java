@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
 public class ActorFileController {
 	@Autowired ActorFileService actorFileService;
 	
-	
+	// actorOne.jsp에서 actor_file 삭제
 	@GetMapping("/on/removeActorFile")
 	public String removeActorFile(HttpSession session 
 									, @RequestParam int actorFileId

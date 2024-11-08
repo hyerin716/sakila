@@ -10,6 +10,9 @@ import com.example.sakila.vo.Film;
 @Mapper
 public interface FilmMapper {
 	
+	// /on/actorOne에서 film 검색시 사용
+	List<Film> selectFilmListByTitle(String searchTitle);
+	
 	// leftmenu.jsp -> 영화추가
 	int insertFilm(Film film);
 	

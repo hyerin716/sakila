@@ -16,6 +16,11 @@ import com.example.sakila.vo.FilmForm;
 public class FilmService {
 	@Autowired FilmMapper filmMapper;
 	
+	// /on/actorOne에서 film 검색시 불러오는 filmList
+	public List<Film> getFilmListByTitle(String searchTitle) {
+		return filmMapper.selectFilmListByTitle(searchTitle);
+	}
+	
 	// addFilm 영화추가
 	public int addFilm(FilmForm filmForm) {
 		Film film = new Film();
@@ -61,7 +66,7 @@ public class FilmService {
 	
 	
 	// /on/actorOne -> 출연작품 출력
-	public List<Film>  getFilmTitleListByActor(int actorId){
+	public List<Film> getFilmTitleListByActor(int actorId){
 		return filmMapper.selectFilmTitleListByActor(actorId);
 	}
 }

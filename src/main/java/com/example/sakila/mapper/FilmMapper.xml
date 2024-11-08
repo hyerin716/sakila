@@ -2,6 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.FilmMapper">
 	
+	<!-- /on/actorOne에서 film 검색시 사용 -->
+	<select id="selectFilmListByTitle" parameterType="String" resultType="com.example.sakila.vo.Film">
+		SELECT 
+			film_id filmId
+			, title
+		FROM film
+		WHERE title LIKE CONCAT('%', #{searchTitle}, '%')
+	</select>
+	
 	<!-- addFilm 영화추가 -->
 	<insert id="insertFilm" parameterType="com.example.sakila.vo.Film">
 		INSERT INTO film(
