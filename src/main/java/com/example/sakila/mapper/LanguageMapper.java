@@ -9,6 +9,9 @@ import com.example.sakila.vo.Language;
 @Mapper
 public interface LanguageMapper {
 	
-	// /on/addFilm -> language 선택에 필요
+	// /on/addLanguage : 언어추가
+	Integer insertLanguage(Language language);
+	
+	// /on/addFilm -> language 선택에 필요, /on/languageList 출력 필요
 	List<Language> selectLanguageList();
 }

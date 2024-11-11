@@ -2,7 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.LanguageMapper">
 	
-	<!-- /on/addFilm -> language 선택에 필요 -->
+	<!-- /on/addLanguage : 언어추가 -->
+	<insert id="insertLanguage" parameterType="com.example.sakila.vo.Language">
+		INSERT INTO language(language_id, name) VALUES(#{languageId}, #{name})	
+	</insert>
+	
+	
+	<!-- /on/addFilm -> language 선택에 필요, /on/languageList 출력 필요 -->
 	<select id="selectLanguageList" resultType="com.example.sakila.vo.Language">
 		SELECT
 			language_id languageId

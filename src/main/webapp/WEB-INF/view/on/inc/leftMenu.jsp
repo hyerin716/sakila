@@ -96,7 +96,6 @@
         <div
           id="panelsStayOpen-collapseThree"
           class="accordion-collapse collapse"
-          
         >
           <div class="accordion-body">
             <a href="${pageContext.request.contextPath}/on/filmList">필름 리스트</a>
@@ -105,16 +104,13 @@
             <a href="${pageContext.request.contextPath}/on/addFilm">필름 추가</a>
           </div>
           <div class="accordion-body">
-            <a href="${pageContext.request.contextPath}/on/">언어 리스트</a>
+            <a href="${pageContext.request.contextPath}/on/languageList">언어 리스트</a>
           </div>
           <div class="accordion-body">
-            <a href="${pageContext.request.contextPath}/on/">언어 추가</a>
+            <a href="${pageContext.request.contextPath}/on/addLanguage">언어 추가</a>
           </div>
         </div>
       </div>
-      
-      
-      
       
       <!-- ::: 고객 관리 ::: -->
    	  <div class="accordion-item">

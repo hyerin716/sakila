@@ -14,7 +14,12 @@ import com.example.sakila.vo.Language;
 public class LanguageService {
 	@Autowired LanguageMapper languageMapper;
 	
-	// /on/addFilm -> language 선택에 필요
+	// /on/addLanguage : 언어추가
+	public int addLanguage(Language language) {
+		return languageMapper.insertLanguage(language);
+	}
+	
+	// /on/addFilm -> language 선택에 필요, /on/languageList 출력 필요
 	public List<Language> getLanguageList() {
 		return languageMapper.selectLanguageList();
 	}
