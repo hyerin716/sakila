@@ -32,10 +32,24 @@
           style=""
         >
           <div class="accordion-body">
-            <a href="">지점 리스트</a>
+            <a href="${pageContext.request.contextPath}/on/storeList">지점 리스트</a>
+            <!-- 
+            	StoreMapper.selectStoreList() : Map 타입으로 반환 - store x staff x address
+            	StoreService.getStoreList() : Map 
+            	/on/stroeList - StoreController.storeList() - storeList.jsp 
+             -->
           </div>
           <div class="accordion-body">
-            <a href="">지점 추가</a>
+            <a href="${pageContext.request.contextPath}/on/addStore">지점 추가</a>
+            <!-- 
+            	GET - /on/addStore 
+            		- StoreController.addStore() : staffList 모델에 추가, search주소검색결과 모델추가 -addStore.jsp
+            		
+            	StoreMapper.insertStore() : Integer
+            	StoreService.addStore() : Integer
+            	POST - /on/addStore - StoreController.addStore(Store) 
+            		 
+             -->
           </div>
         </div>
       </div>
@@ -82,16 +96,26 @@
         <div
           id="panelsStayOpen-collapseThree"
           class="accordion-collapse collapse"
-          style=""
+          
         >
           <div class="accordion-body">
-            <a href="">영화 리스트</a>
+            <a href="${pageContext.request.contextPath}/on/filmList">필름 리스트</a>
           </div>
           <div class="accordion-body">
-            <a href="${pageContext.request.contextPath}/on/addFilm">영화 추가</a>
+            <a href="${pageContext.request.contextPath}/on/addFilm">필름 추가</a>
+          </div>
+          <div class="accordion-body">
+            <a href="${pageContext.request.contextPath}/on/">언어 리스트</a>
+          </div>
+          <div class="accordion-body">
+            <a href="${pageContext.request.contextPath}/on/">언어 추가</a>
           </div>
         </div>
       </div>
+      
+      
+      
+      
       <!-- ::: 고객 관리 ::: -->
    	  <div class="accordion-item">
         <h2 class="accordion-header">

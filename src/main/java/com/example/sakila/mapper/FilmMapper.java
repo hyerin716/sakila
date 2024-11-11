@@ -10,6 +10,12 @@ import com.example.sakila.vo.Film;
 @Mapper
 public interface FilmMapper {
 	
+	// categoryId가 null이나 0이 아닐때 filmList 출력
+	List<Map<String, Object>> selectFilmListByCategory(Map<String, Object> paramMap);
+	
+	// categorId가 null이나 0일때 filmList 출력
+	List<Map<String, Object>> selectFilmList(Map<String, Object> paramMap);
+	
 	// /on/actorOne에서 film 검색시 사용
 	List<Film> selectFilmListByTitle(String searchTitle);
 	
