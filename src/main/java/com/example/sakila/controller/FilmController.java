@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.sakila.service.ActorService;
 import com.example.sakila.service.CategoryService;
+import com.example.sakila.service.FilmCategoryService;
 import com.example.sakila.service.FilmService;
 import com.example.sakila.service.InventoryService;
 import com.example.sakila.service.LanguageService;
@@ -31,6 +32,7 @@ public class FilmController {
 	@Autowired LanguageService languageService;
 	@Autowired CategoryService categoryService;
 	@Autowired InventoryService invenService;
+	@Autowired FilmCategoryService filmCategoryService;
 	
 	// 필름 수정
 	@PostMapping("/on/modifyFilm")
@@ -137,16 +139,37 @@ public class FilmController {
 	// filmOne 페이지 출력
 	@GetMapping("/on/filmOne")
 	public String filmOne(Model model
-						, @RequestParam int filmId) {
-		// filmOne 정보 출력
+						, @RequestParam int filmId
+						, @RequestParam(required = false) String searchName) {
+		
+		/*
+		 * + 1) 현재 필름 정보
+		 * + 2) 전체 카테고리 리스트
+		 * +  3) 현재필름의 카테고리 리스트
+		 * 4) 검색 배우 리스트(searchName이 null 이 아닐때)
+		 * + 5) 현재필름의 배우 리스트 
+		*/
+		
+		// 1) 현재 filmOne 정보 출력
 		Map<String, Object> film = filmService.getFilmOne(filmId);
 		log.debug(film.toString());	//디버깅
 		
-		// filmOne-> 해당 작품에 출연한 배우들 출력
+		// 2) 전체 카테고리 리스트
+		List<Category> allCategoryList = categoryService.getCategoryList();
+		
+		// 3) 현재필름의 카테고리 리스트
+		List<Map<String, Object>> filmCategoryList = filmCategoryService.getFilmCategoryListByFilm(filmId);
+		
+		// 5) filmOne-> 해당 작품에 출연한 배우들 출력
 		List<Actor> actorList = actorService.getActorListByFilm(filmId);
 		
-		model.addAttribute("film", film);
-		model.addAttribute("actorList", actorList);
+		model.addAttribute("film", film); // 1)
+		model.addAttribute("allCategoryList", allCategoryList); // 2)
+		model.addAttribute("filmCategoryList", filmCategoryList); // 3)
+		
+		
+		
+		model.addAttribute("actorList", actorList); // 5)
 		
 		return "on/filmOne";
 	}
