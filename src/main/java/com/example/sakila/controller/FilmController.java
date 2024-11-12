@@ -17,6 +17,7 @@ import com.example.sakila.service.InventoryService;
 import com.example.sakila.service.LanguageService;
 import com.example.sakila.vo.Actor;
 import com.example.sakila.vo.Category;
+import com.example.sakila.vo.Film;
 import com.example.sakila.vo.FilmForm;
 import com.example.sakila.vo.Language;
 
@@ -31,6 +32,28 @@ public class FilmController {
 	@Autowired CategoryService categoryService;
 	@Autowired InventoryService invenService;
 	
+	// 필름 수정
+	@PostMapping("/on/modifyFilm")
+	public String modifyFilm(Film film) {
+		log.debug(film.toString());
+		
+		filmService.modifyFilm(film);
+		return "redirect:/on/filmOne?filmId=" + film.getFilmId();
+	}
+	
+	// 필름 수정 -> modifyFilm.jsp로 보내기
+	@GetMapping("/on/modifyFilm")
+	public String modifyFilm(Model model, @RequestParam Integer filmId) {
+		// 원래 정보(filmOne) 보여줘야함
+		Map<String, Object> film = filmService.getFilmOne(filmId);
+		model.addAttribute("film", film);
+		
+		log.debug(film.toString());
+		
+		return "on/modifyFilm";
+	}
+	
+	// 필름 삭제
 	@GetMapping("/on/removeFilm")
 	public String removeFilm(Model model
 								, @RequestParam Integer filmId) {
@@ -62,7 +85,7 @@ public class FilmController {
 		return "redirect:/on/filmList";
 	}
 	
-	
+	// 필름 리스트 출력
 	@GetMapping("/on/filmList")
 	public String filmList(Model model
 							, @RequestParam(required = false) Integer categoryId	//required = false: 요청에 이 파라미터가 없더라도 오류가 발생하지 않고 null 들어감

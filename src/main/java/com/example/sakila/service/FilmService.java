@@ -21,6 +21,11 @@ public class FilmService {
 	@Autowired FilmCategoryMapper filmCategoryMapper;
 	@Autowired FilmActorMapper filmActorMapper;
 	
+	// film 수정 : /on/modifyFilm : on/filmOne
+	public void modifyFilm(Film film) {
+		filmMapper.updateFilm(film);
+	}
+	
 	// film 삭제
 	public void removeFilmByKey(Integer filmId) {
 		
