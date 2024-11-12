@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.sakila.mapper.FilmActorMapper;
+import com.example.sakila.mapper.FilmCategoryMapper;
 import com.example.sakila.mapper.FilmMapper;
 import com.example.sakila.vo.Film;
 import com.example.sakila.vo.FilmForm;
@@ -16,10 +18,19 @@ import com.example.sakila.vo.FilmForm;
 @Transactional
 public class FilmService {
 	@Autowired FilmMapper filmMapper;
+	@Autowired FilmCategoryMapper filmCategoryMapper;
+	@Autowired FilmActorMapper filmActorMapper;
 	
 	// film 삭제
-	public Integer removeFilmByKey(Integer filmId) {
-		return filmMapper.deleteFilmByKey(filmId);
+	public void removeFilmByKey(Integer filmId) {
+		
+		// 1) film_category 삭제
+		filmCategoryMapper.deleteFilmCategoryByFilm(filmId);
+		// 2) film_actor 삭제
+		filmActorMapper.deleteFilmActorByFilm(filmId);
+		// 3) film 삭제
+		filmMapper.deleteFilmByKey(filmId);
+		
 	}
 	
 	// filmList 출력

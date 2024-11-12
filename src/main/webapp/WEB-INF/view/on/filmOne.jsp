@@ -21,7 +21,7 @@
 		<!-- ●
 			● 1) film 상세
 			1-1) film 수정 - /on/modifyFilm
-			1-2) film 삭제 - /on/removeFilm (inventory-rental 정보 확인 + film_category 삭제 + film_actor삭제 + film 삭제)
+			● 1-2) film 삭제 - /on/removeFilm (inventory-rental 정보 확인 + film_category 삭제 + film_actor삭제 + film 삭제)
 			
 			2) film_category 리스트
 			2-1) film_category 추가	/on/addFilmCategory -> 카테고리 전체 목록에서 선택
