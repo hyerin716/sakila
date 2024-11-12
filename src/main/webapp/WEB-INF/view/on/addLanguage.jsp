@@ -42,9 +42,9 @@
 		// 입력폼 유효성 검사
 		if($('#name').val() == null || $('#name').val() == ''){ // 입력x 유효성검사
 			alert('언어를 입력하세요');
-		} else if(){ // 중복유효성 검사
+		} /*else if(){ // 중복유효성 검사
 			
-		} else{
+		} */else{
 			$('#addLanguageForm').submit();
 		}
 	});

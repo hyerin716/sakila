@@ -4,7 +4,7 @@
 	
 	<!-- /on/addLanguage : 언어추가 -->
 	<insert id="insertLanguage" parameterType="com.example.sakila.vo.Language">
-		INSERT INTO language(language_id, name) VALUES(#{languageId}, #{name})	
+		INSERT INTO language(name) VALUES(#{name})	
 	</insert>
 	
 	

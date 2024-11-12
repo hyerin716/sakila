@@ -97,7 +97,8 @@
 			</div>
 			<div>
 				<a href="">영화 수정</a>
-				<a href="">영화 삭제</a>
+				<a href="${pageContext.request.contextPath}/on/removeFilm?filmId=${film.filmId}">영화 삭제</a>
+				<span class="text-danger">${removeFilmMsg}</span>
 			</div>
 			<br>
 			<div>

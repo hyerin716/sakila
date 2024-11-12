@@ -34,9 +34,9 @@
           <div class="accordion-body">
             <a href="${pageContext.request.contextPath}/on/storeList">지점 리스트</a>
             <!-- 
-            	StoreMapper.selectStoreList() : Map 타입으로 반환 - store x staff x address
-            	StoreService.getStoreList() : Map 
-            	/on/stroeList - StoreController.storeList() - storeList.jsp 
+            	StoreMapper.selectStoreList() : List<Map> - store x staff x address
+            	StoreService.getStoreList() : List<Map> 
+            	GET - /on/stroeList - StoreController.storeList() - storeList.jsp 
              -->
           </div>
           <div class="accordion-body">
@@ -98,16 +98,22 @@
           class="accordion-collapse collapse"
         >
           <div class="accordion-body">
-            <a href="${pageContext.request.contextPath}/on/filmList">필름 리스트</a>
+            <a href="${pageContext.request.contextPath}/on/categoryList">카테고리 리스트</a>
           </div>
           <div class="accordion-body">
-            <a href="${pageContext.request.contextPath}/on/addFilm">필름 추가</a>
+            <a href="${pageContext.request.contextPath}/on/addCategory">카테고리 추가</a>
           </div>
           <div class="accordion-body">
             <a href="${pageContext.request.contextPath}/on/languageList">언어 리스트</a>
           </div>
           <div class="accordion-body">
             <a href="${pageContext.request.contextPath}/on/addLanguage">언어 추가</a>
+          </div>
+          <div class="accordion-body">
+            <a href="${pageContext.request.contextPath}/on/filmList">필름 리스트</a>
+          </div>
+          <div class="accordion-body">
+            <a href="${pageContext.request.contextPath}/on/addFilm">필름 추가</a>
           </div>
         </div>
       </div>

@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.FilmMapper">
 	
+	<!-- 필름 삭제 -->
+	<delete id = "deleteFilmByKey" parameterType="Integer">
+		DELETE FROM film
+		WHERE film_id = #{filmId}
+	</delete>
+	
+	
 	<!-- categoryId가 null이나 0이 아닐때 filmList 출력 -->
 	<select id="selectFilmListByCategory"
 			parameterType="Map"

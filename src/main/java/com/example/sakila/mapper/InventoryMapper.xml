@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sakila.mapper.InventoryMapper">
+	
+	<!-- /on/removeFilm : 필름삭제 시 필요 -> inventory-rental 정보 확인하기 위해서 -->
+	<select id="selectCountInventoryByFilm" parameterType="Integer">
+		SELECT COUNT(*)
+		FROM inventory
+		WHERE film_id = #{filmId}
+	</select>
+
+</mapper>
