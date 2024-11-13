@@ -43,7 +43,7 @@
 					<tr>
 						<td>${s.storeId}</td>
 						<td>
-							<a href="${pageContext.request.contextPath}/on/inventoryList?storeId="${s.storeId}">인벤토리</a>
+							<a href="${pageContext.request.contextPath}/on/inventoryList?storeId=${s.storeId}">인벤토리</a>
 						</td>
 						<td>${s.managerStaffId}</td>
 						<td>${s.addressId}</td>
