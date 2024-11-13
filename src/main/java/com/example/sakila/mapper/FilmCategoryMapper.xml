@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.FilmCategoryMapper">
 
+	<!-- /on//on/removeFilmCategory : filmOne에서 카테고리 삭제 -->
+	<delete id="deleteFilmCategory" parameterType="com.example.sakila.vo.FilmCategory">
+		DELETE FROM film_category
+		WHERE film_id = #{filmId} AND category_id = #{categoryId}
+	</delete>
+
 	<!-- /on/addFilmCategory : filmOne에서 카테고리 추가 -->
 	<insert id="insertFilmCategory" parameterType="com.example.sakila.vo.FilmCategory">
 		INSERT INTO film_category(

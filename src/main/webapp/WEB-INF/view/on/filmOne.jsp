@@ -24,15 +24,17 @@
 			● 1-2) film 삭제 - /on/removeFilm (inventory-rental 정보 확인 + film_category 삭제 + film_actor삭제 + film 삭제)
 			
 			● 2) film_category 리스트
-			2-1) film_category 추가	/on/addFilmCategory -> 카테고리 전체 목록에서 선택 -> [이슈] 동일한 카테고리를 한번 더 추가하면 PK중복에러 발생
-			2-2) film_category 수정	/on/removeFilmCategory
+			● 2-1) film_category 추가	/on/addFilmCategory -> 카테고리 전체 목록에서 선택 -> [이슈] 동일한 카테고리를 한번 더 추가하면 PK중복에러 발생
+			● 2-2) film_category 삭제	/on/removeFilmCategory
 			
 			필름쪽에서 액터 추가
 			● 3) film_actor 리스트
 			3-1) film_actor 추가	/on/addActorByFilm -> 액터 "검색" 후 선택
-			3-2) film_actor 삭제	/on/removeFilmActor ->
+			3-2) film_actor 삭제	/on/removeFilmActor
 			
 			4) inventory 정보
+			
+			
 		 -->
 		
 		<div class="col-sm-10">
@@ -123,7 +125,7 @@
 						<div>
 							${fc.name}
 							&nbsp;
-							<a href="">삭제</a>
+							<a href="${pageContext.request.contextPath}/on/removeFilmCategory?filmId=${fc.filmId}&categoryId=${fc.categoryId}">삭제</a>
 						</div>
 					</c:forEach>
 				</div>
@@ -155,7 +157,7 @@
 								${a.firstName} ${a.lastName}
 							</a>
 							&nbsp;
-							<a href="삭제"></a>
+							<a href="">삭제</a>
 						</div>
 					</c:forEach>
 					
