@@ -4,32 +4,31 @@
 	<!-- /on/storeList : 지점리스트 출력 (store x staff x address) -->
 	<select id="selectStoreList" resultType="Map">
 		SELECT 
-			st.store_id	storeId
-			, r1.staff_id staffId
-			, r1.first_name firstName
-			, r1.last_name lastName
-			, r1.email
-			, r1.address_id addressId
-			, r1.address
-			, r1.address2
-			, r1.district
-			, r1.phone
-		FROM
-		store st INNER JOIN (SELECT 
-										s.store_id
-										, s.staff_id
-										, s.first_name
-										, s.last_name
-										, s.email
-										, s.address_id
-										, a.address
-										, a.address2
-										, a.district
-										, a.phone
-									FROM
-									staff s INNER JOIN address a
-									ON  s.address_id = a.address_id) r1
-		ON st.store_id = r1.store_id;
+			t.store_id storeId
+			, t.manager_staff_id managerStaffId
+			, t.address_id addressId
+			, t.staff_id staffId
+			, t.first_name firstName
+			, t.last_name lastName
+			, t.email email
+			, t.username username
+			, a.address address
+			, a.district district
+			, a.city_id cityId
+			, a.postal_code postalCode
+			, a.phone phone
+		FROM address a INNER JOIN (SELECT 
+												str.store_id
+												, str.manager_staff_id
+												, str.address_id
+												, s.staff_id
+												, s.first_name
+												, s.last_name
+												, s.email
+												, s.username
+											FROM store str INNER JOIN staff s
+											ON str.store_id = s.store_id) t
+		ON a.address_id = t.address_id
 	</select>
 
 	<select id="selectStoreListByStaff"

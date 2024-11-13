@@ -51,6 +51,9 @@
             		 
              -->
           </div>
+          <div class="accordion-body">
+            <a href="${pageContext.request.contextPath}/on/addInventory">인벤토리 추가</a>
+          </div>
         </div>
       </div>
       <!-- ::: STAFF 관리 ::: -->

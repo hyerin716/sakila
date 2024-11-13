@@ -25,27 +25,37 @@
 			<table class="table table-striped">
 				<tr>
 					<th>storeId</th>
+					<th>인벤토리 관리</th>
+					<th>managerStaffId</th>
+					<th>addressId</th>
 					<th>staffId</th>
 					<th>firstName</th>
 					<th>lastName</th>
 					<th>email</th>
-					<th>addressId</th>
+					<th>username</th>
 					<th>address</th>
-					<th>address2</th>
 					<th>district</th>
+					<th>cityId</th>
+					<th>poastalCode</th>
 					<th>phone</th>
 				</tr>
 				<c:forEach var="s" items="${storeList}">
 					<tr>
 						<td>${s.storeId}</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/on/inventoryList?storeId="${s.storeId}">인벤토리</a>
+						</td>
+						<td>${s.managerStaffId}</td>
+						<td>${s.addressId}</td>
 						<td>${s.staffId}</td>
 						<td>${s.firstName}</td>
 						<td>${s.lastName}</td>
 						<td>${s.email}</td>
-						<td>${s.addressId}</td>
+						<td>${s.username}</td>
 						<td>${s.address}</td>
-						<td>${s.address2}</td>
 						<td>${s.district}</td>
+						<td>${s.cityId}</td>
+						<td>${s.poastalCode}</td>
 						<td>${s.phone}</td>
 					</tr>
 				</c:forEach>
