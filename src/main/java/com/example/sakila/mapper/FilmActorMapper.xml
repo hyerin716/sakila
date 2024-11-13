@@ -23,6 +23,7 @@
 	
 	
 	<!-- actorOne에서 필름 추가(film_actor 추가) -->
+	<!-- filmOne에서 액터 추가(film_actor 추가) -->
 	<insert id="insertFilmActor" parameterType="com.example.sakila.vo.FilmActor">
 		INSERT INTO film_actor (
 			actor_id

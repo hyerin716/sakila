@@ -16,6 +16,7 @@ public interface FilmActorMapper {
 	// actorOne에서 필름 삭제
 	int deleteFilmActor(FilmActor filmActor);
 	
-	// actorOne에서 필름 추가(film_actor 추가) /on/addFilmByActor 
+	// actorOne에서 필름 추가(film_actor 추가) /on/addFilmActorByActor
+	// filmOne에서 액터 추가(film_actor 추가)	/on/addFilmActorByFilm
 	int insertFilmActor(FilmActor filmActor);
 }

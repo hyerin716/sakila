@@ -114,7 +114,7 @@
 					</form>
 					
 					<form id="formAddFilm" method="post"
-								action="${pageContext.request.contextPath}/on/addFilmByActor">
+								action="${pageContext.request.contextPath}/on/addFilmActorByActor">
 						<input  type="hidden" name="actorId" value="${actor.actorId}">									
 						<select size="5" name="filmId">
 							<c:forEach var="sf" items="${searchFilmList}">

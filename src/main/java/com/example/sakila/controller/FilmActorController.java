@@ -26,16 +26,23 @@ public class FilmActorController {
 		return "redirect:/on/actorOne?actorId=" + filmActor.getActorId();
 	}
 	
-	
-	// actorOne에서 필름 추가
-	@PostMapping("/on/addFilmByActor")
-	public String addFilmByActor(FilmActor filmActor) {
-		
+	// redirect:/on/filmOne(filmOne에서 filmActor 추가요청)
+	@PostMapping("/on/addFilmActorByFilm")
+	public String addFilmActorByFilm(FilmActor filmActor) {
 		log.debug("filmId: " + filmActor.getFilmId());
 		log.debug("actorId: " + filmActor.getActorId());
 		
 		int row = filmActorService.addFilmActor(filmActor);
+		return "redirect:/on/filmOne?filmId="+filmActor.getFilmId();				
+	}
+	
+	// redirect:/on/actorOne(actorOne에서 filmActor 추가요청)
+	@PostMapping("/on/addFilmActorByActor")
+	public String addFilmActorByActor(FilmActor filmActor) {
+		log.debug("filmId: " + filmActor.getFilmId());
+		log.debug("actorId: " + filmActor.getActorId());
 		
+		int row = filmActorService.addFilmActor(filmActor);
 		return "redirect:/on/actorOne?actorId=" + filmActor.getActorId();
 	}
 }

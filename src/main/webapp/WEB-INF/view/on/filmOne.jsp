@@ -145,15 +145,16 @@
 						<button id="btnSearchName" type="button">이름검색</button>
 					</form>
 					
-					<form method="post"> <!-- 출연배우 추가 -->
+					<form id="formFilmActor" method="post"
+							action="${pageContext.request.contextPath}/on/addFilmActorByFilm"> <!-- 출연배우 추가 -->
+						<input type="hidden" name="filmId" value="${film.filmId}">
 						<select name="actorId" id="actorId" size="5">
-							<option value="">배우 선택</option>
 							<!-- model.searchActorList -->
 							<c:forEach var="sa" items="${searchActorList}">
 								<option value="${sa.actorId}">${sa.firstName} ${sa.lastName}</option>
 							</c:forEach>
 						</select>
-						<button type="button">출연배우추가</button>
+						<button id="btnFilmActor" type="button">출연배우추가</button>
 					</form>
 				
 				
@@ -173,7 +174,16 @@
 	</div>
 </body>
 <script>
-	//
+	// 출연 배우 추가 버튼
+	$('#btnFilmActor').click(function() {
+		if($('#actorId').val() == null || $('#actorId').val() == ''){
+			alert('출연배우를 선택하세요');
+		} else{
+			$('#formFilmActor').submit();
+		}
+	});
+
+	// 배우 검색 버튼
 	$('#btnSearchName').click(function() {
 		if($('#searchName').val() == ''){
 			alert('검색이름을 입력하세요');

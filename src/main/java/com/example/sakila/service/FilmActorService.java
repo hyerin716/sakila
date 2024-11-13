@@ -23,6 +23,7 @@ public class FilmActorService {
 	
 	
 	// actorOne에서 필름 추가(film_actor 추가)
+	// filmOne에서 액터 추가(film_actor 추가)
 	public int addFilmActor(FilmActor filmActor) {
 		return filmActorMapper.insertFilmActor(filmActor);
 	}
