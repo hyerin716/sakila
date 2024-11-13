@@ -15,9 +15,19 @@ import lombok.extern.slf4j.Slf4j;
 public class FilmActorController {
 	@Autowired FilmActorService filmActorService;
 	
-	// actorOne에서 필름 삭제
-	@GetMapping("/on/removeFilmActor")
-	public String removeFilmActor(FilmActor filmActor) {
+	// filmOne에서 액터 삭제(filmActor 삭제요청)
+	@GetMapping("/on/removeFilmActorByFilm")
+	public String removeFilmActorByFilm(FilmActor filmActor) {
+		log.debug("filmId: " + filmActor.getFilmId());
+		log.debug("actorId: " + filmActor.getActorId());
+		
+		int row = filmActorService.removeFilmActor(filmActor);
+		return "redirect:/on/filmOne?filmId="+filmActor.getFilmId();
+	}
+	
+	// actorOne에서 필름 삭제(filmActor 삭제요청)
+	@GetMapping("/on/removeFilmActorByActor")
+	public String removeFilmActorByActor(FilmActor filmActor) {
 		log.debug("filmId: " + filmActor.getFilmId());
 		log.debug("actorId: " + filmActor.getActorId());
 		
@@ -25,6 +35,8 @@ public class FilmActorController {
 		
 		return "redirect:/on/actorOne?actorId=" + filmActor.getActorId();
 	}
+	
+	
 	
 	// redirect:/on/filmOne(filmOne에서 filmActor 추가요청)
 	@PostMapping("/on/addFilmActorByFilm")

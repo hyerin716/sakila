@@ -16,7 +16,8 @@ public class FilmActorService {
 	@Autowired FilmActorMapper filmActorMapper;
 	
 	
-	// actorOne에서 필름 삭제
+	// actorOne에서 필름 삭제(film_actor 삭제)
+	// filmOne에서 액터 삭제(film_actor 삭제)
 	public int removeFilmActor(FilmActor filmActor) {
 		return filmActorMapper.deleteFilmActor(filmActor);
 	}

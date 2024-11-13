@@ -132,7 +132,7 @@
 						${f.title}
 					</a> 
 					&nbsp;
-					<a href="${pageContext.request.contextPath}/on/removeFilmActor?filmId=${f.filmId}&actorId=${actor.actorId}" 
+					<a href="${pageContext.request.contextPath}/on/removeFilmActorByActor?filmId=${f.filmId}&actorId=${actor.actorId}" 
 						class="btn btn-danger">film_actor에서 삭제</a>
 					<!-- 삭제시 filmId와 actorId가 PK이므로 f.filmId & actor.actorId 필요 -->
 				</c:forEach>

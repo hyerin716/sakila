@@ -15,7 +15,8 @@
 	</delete>
 	
 
-	<!-- actorOne에서 필름 삭제 -->
+	<!-- actorOne에서 필름 삭제(film_actor 삭제) -->
+	<!-- filmOne에서 액터 삭제(film_actor 삭제) -->
 	<delete id="deleteFilmActor" parameterType="com.example.sakila.vo.FilmActor">
 		DELETE FROM film_actor
 		WHERE actor_id = #{actorId} AND film_id = ${filmId}	

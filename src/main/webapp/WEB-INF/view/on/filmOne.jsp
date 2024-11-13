@@ -29,8 +29,8 @@
 			
 			필름쪽에서 액터 추가
 			● 3) film_actor 리스트
-			3-1) film_actor 추가	/on/addActorByFilm -> 액터 "검색" 후 선택
-			3-2) film_actor 삭제	/on/removeFilmActor
+			● 3-1) film_actor 추가	/on/addActorByFilm -> 액터 "검색" 후 선택 -> [이슈] 동일한 배우를 한번 더 추가하면 PK중복에러 발생
+			● 3-2) film_actor 삭제	/on/removeFilmActor
 			
 			4) inventory 정보
 			
@@ -164,7 +164,7 @@
 								${a.firstName} ${a.lastName}
 							</a>
 							&nbsp;
-							<a href="">삭제</a>
+							<a href="${pageContext.request.contextPath}/on/removeFilmActorByFilm?filmId=${film.filmId}&actorId=${a.actorId}">삭제</a>
 						</div>
 					</c:forEach>
 					
