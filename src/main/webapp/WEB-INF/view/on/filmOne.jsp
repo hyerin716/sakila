@@ -24,7 +24,7 @@
 			● 1-2) film 삭제 - /on/removeFilm (inventory-rental 정보 확인 + film_category 삭제 + film_actor삭제 + film 삭제)
 			
 			● 2) film_category 리스트
-			2-1) film_category 추가	/on/addFilmCategory -> 카테고리 전체 목록에서 선택
+			2-1) film_category 추가	/on/addFilmCategory -> 카테고리 전체 목록에서 선택 -> [이슈] 동일한 카테고리를 한번 더 추가하면 PK중복에러 발생
 			2-2) film_category 수정	/on/removeFilmCategory
 			
 			필름쪽에서 액터 추가
@@ -104,8 +104,9 @@
 			<div>
 				<h2>작품 장르(CATEGORY)</h2>
 				
-				<form action="${pageContext.request.contextPath}/on/addFilmCategory"
+				<form id="formFilmCategory" action="${pageContext.request.contextPath}/on/addFilmCategory"
 					method="post"><!-- 이 영화 카테고리 추가 -->
+					<input type="hidden" name="filmId" value="${film.filmId}">
 					<select name="categoryId" id="categoryId">
 						<option value="">카테고리 선택</option>
 						<!-- model.allCategoryList -->
@@ -113,7 +114,7 @@
 							<option value="${ac.categoryId}">${ac.name}</option>
 						</c:forEach>
 					</select>	
-					<button type="button">현재 필름 카테고리 추가</button>
+					<button id="btnFilmCategory" type="button">현재 필름 카테고리 추가</button>
 				</form>
 				
 				<!-- 카테고리 리스트 model.filmCategoryList -->
@@ -121,7 +122,7 @@
 					<c:forEach var="fc" items="${filmCategoryList}">
 						<div>
 							${fc.name}
-							$nbsp;
+							&nbsp;
 							<a href="">삭제</a>
 						</div>
 					</c:forEach>
@@ -163,4 +164,13 @@
 		</div>
 	</div>
 </body>
+<script>
+	$('#btnFilmCategory').click(function() {
+		if($('#categoryId').val() == ''){
+			alert('categoryId를 선택하세요');
+		} else{
+			$('#formFilmCategory').submit();
+		}
+	});
+</script>
 </html>

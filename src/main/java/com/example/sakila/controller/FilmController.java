@@ -139,7 +139,7 @@ public class FilmController {
 	// filmOne 페이지 출력
 	@GetMapping("/on/filmOne")
 	public String filmOne(Model model
-						, @RequestParam int filmId
+						, @RequestParam Integer filmId
 						, @RequestParam(required = false) String searchName) {
 		
 		/*
