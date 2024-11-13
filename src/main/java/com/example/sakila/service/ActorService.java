@@ -28,6 +28,11 @@ public class ActorService {
 	@Autowired ActorFileMapper actorFileMapper;
 	@Autowired FilmActorMapper filmActorMapper;
 	
+	// /on/filmOne : 작품에 출연한 배우들 검색 -> searchName검색결과 
+	public List<Actor> getActorListByActor(String searchName) {
+		return actorMapper.selectActorListByActor(searchName);
+	}
+	
 	// /on/removeActor : /on/actrOne에서 actor 삭제
 	public void removeActor(int actorId, String path) {
 		// 1) film_actor 삭제(없다면 삭제x (없을 수도 있다))
@@ -77,7 +82,7 @@ public class ActorService {
 		return lastPage;
 	}
 	
-	// 배우 리스트 출력
+	// /on/actorList : ActorList 출력
 	public List<Actor> getActorList(int currentPage, int rowPerPage, String searchWord) {
 		Map<String, Object> paramMap = new HashMap<>();
 		int beginRow = (currentPage-1) * rowPerPage;

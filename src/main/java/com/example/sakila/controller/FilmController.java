@@ -145,8 +145,8 @@ public class FilmController {
 		/*
 		 * + 1) 현재 필름 정보
 		 * + 2) 전체 카테고리 리스트
-		 * +  3) 현재필름의 카테고리 리스트
-		 * 4) 검색 배우 리스트(searchName이 null 이 아닐때)
+		 * + 3) 현재필름의 카테고리 리스트
+		 * + 4) 검색 배우 리스트(searchName이 null 이 아닐때)
 		 * + 5) 현재필름의 배우 리스트 
 		*/
 		
@@ -160,15 +160,18 @@ public class FilmController {
 		// 3) 현재필름의 카테고리 리스트
 		List<Map<String, Object>> filmCategoryList = filmCategoryService.getFilmCategoryListByFilm(filmId);
 		
+		// 4) 검색 배우 리스트(searchName이 null 이 아닐때)
+		if(searchName != null) { // 배우이름검색 버튼 요청으로 왔다면
+			List<Actor> searchActorList = actorService.getActorListByActor(searchName);
+			model.addAttribute("searchActorList", searchActorList);			
+		}
+	
 		// 5) filmOne-> 해당 작품에 출연한 배우들 출력
 		List<Actor> actorList = actorService.getActorListByFilm(filmId);
 		
 		model.addAttribute("film", film); // 1)
 		model.addAttribute("allCategoryList", allCategoryList); // 2)
 		model.addAttribute("filmCategoryList", filmCategoryList); // 3)
-		
-		
-		
 		model.addAttribute("actorList", actorList); // 5)
 		
 		return "on/filmOne";
