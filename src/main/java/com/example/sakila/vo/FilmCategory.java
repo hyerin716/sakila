@@ -1,7 +1,7 @@
 package com.example.sakila.vo;
 
 public class FilmCategory {
-	private int filmId;
-	private int categoryId;
+	private Integer filmId;
+	private Integer categoryId;
 	private String lastUpdate;
 }
