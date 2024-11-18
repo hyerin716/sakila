@@ -138,10 +138,10 @@
           class="accordion-collapse collapse"
         >
           <div class="accordion-body">
-            <a href="">고객 리스트</a>
+            <a href="${pageContext.request.contextPath}/on/customerList">고객 리스트</a>
           </div>
           <div class="accordion-body">
-            <a href="">고객 추가</a>
+            <a href="${pageContext.request.contextPath}/on/addCustomer">고객 추가</a>
           </div>
         </div>
       </div>

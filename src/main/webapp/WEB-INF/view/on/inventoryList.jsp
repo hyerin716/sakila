@@ -21,6 +21,13 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<h1>${storeId}지점 INVENTORY LIST</h1>
+			
+			<div>
+				<a href="${pageContext.request.contextPath}/on/addInventory?storeId=${storeId}">
+					인벤토리 추가
+				</a>
+			</div>
+			
 			<table class="table">
 				<tr>
 					<td>inventoryId</td>
