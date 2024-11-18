@@ -10,6 +10,9 @@ import com.example.sakila.vo.Inventory;
 @Mapper
 public interface InventoryMapper {
 	
+	// /on/removeInventoryBykey : inventoryList.jsp -> 인벤토리 삭제
+	Integer deleteInventoryBykey(Integer inventoryId);
+	
 	// /on/addInventory : storeList.jsp -> 인벤토리 추가
 	Integer insertInventory(Inventory inventory);	
 	

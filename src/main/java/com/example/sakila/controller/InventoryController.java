@@ -23,6 +23,13 @@ public class InventoryController {
 	@Autowired InventoryService inventoryService;
 	@Autowired FilmService filmService;
 	
+	// 인벤토리 삭제
+	@GetMapping("/on/removeInventoryByKey")
+	public String removeInventoryByKey(Inventory inventory) {
+		inventoryService.removeInventoryByKey(inventory.getInventoryId());
+		return "redirect:/on/inventoryList?storeId="+inventory.getStoreId();
+	}
+	
 	// 인벤토리 추가
 	@PostMapping("/on/addInventory")
 	public String addInventory(Inventory inventory) {
