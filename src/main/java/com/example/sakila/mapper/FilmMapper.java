@@ -23,6 +23,7 @@ public interface FilmMapper {
 	List<Map<String, Object>> selectFilmList(Map<String, Object> paramMap);
 	
 	// /on/actorOne에서 film 검색시 사용
+	// /on/addInventory에서 film 검색시 사용
 	List<Film> selectFilmListByTitle(String searchTitle);
 	
 	// leftmenu.jsp -> 영화추가

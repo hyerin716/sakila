@@ -24,15 +24,17 @@
 			<table class="table">
 				<tr>
 					<td>inventoryId</td>
-					<td>filmId</td>
-					<td>title</td>
+					<td>(filmId)title</td>
 					<td>lastUpdate</td>
 				</tr>
 				<c:forEach var="iv" items="${inventoryList}">
 					<tr>
 						<td>${iv.inventoryId}</td>
-						<td>${iv.filmId}</td>
-						<td>${iv.title}</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${iv.filmId}">
+								(${iv.filmId}) ${iv.title}
+							</a>
+						</td>
 						<td>${iv.lastUpdate}</td>
 					</tr>
 				</c:forEach>

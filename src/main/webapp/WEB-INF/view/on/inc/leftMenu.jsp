@@ -23,7 +23,7 @@
             aria-expanded="false"
             aria-controls="panelsStayOpen-collapseOne"
           >
-           ::: 지점 관리 :::
+           ::: 지점&인벤토리 관리 :::
           </button>
         </h2>
         <div
@@ -50,9 +50,6 @@
             	POST - /on/addStore - StoreController.addStore(Store) 
             		 
              -->
-          </div>
-          <div class="accordion-body">
-            <a href="${pageContext.request.contextPath}/on/addInventory">인벤토리 추가</a>
           </div>
         </div>
       </div>

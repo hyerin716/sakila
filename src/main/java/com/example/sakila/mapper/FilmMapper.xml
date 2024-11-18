@@ -89,6 +89,7 @@
 	</select>
 	
 	<!-- /on/actorOne에서 film 검색시 사용 -->
+	<!-- /on/addInventory에서 film 검색시 사용 -->
 	<select id="selectFilmListByTitle" parameterType="String" resultType="com.example.sakila.vo.Film">
 		SELECT 
 			film_id filmId

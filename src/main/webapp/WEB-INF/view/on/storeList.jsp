@@ -25,7 +25,8 @@
 			<table class="table table-striped">
 				<tr>
 					<th>storeId</th>
-					<th>인벤토리 관리</th>
+					<th>인벤토리 리스트</th>
+					<th>인벤토리 추가</th>
 					<th>managerStaffId</th>
 					<th>addressId</th>
 					<th>staffId</th>
@@ -43,7 +44,10 @@
 					<tr>
 						<td>${s.storeId}</td>
 						<td>
-							<a href="${pageContext.request.contextPath}/on/inventoryList?storeId=${s.storeId}">인벤토리</a>
+							<a href="${pageContext.request.contextPath}/on/inventoryList?storeId=${s.storeId}">인벤토리 리스트</a>
+						</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/on/addInventory?storeId=${s.storeId}">인벤토리 추가</a>
 						</td>
 						<td>${s.managerStaffId}</td>
 						<td>${s.addressId}</td>

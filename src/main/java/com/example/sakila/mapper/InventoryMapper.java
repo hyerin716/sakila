@@ -5,8 +5,13 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.sakila.vo.Inventory;
+
 @Mapper
 public interface InventoryMapper {
+	
+	// /on/addInventory : storeList.jsp -> 인벤토리 추가
+	Integer insertInventory(Inventory inventory);	
 	
 	// /on/inventoryList : storeList.jsp -> inventoryList 출력
 	List<Map<String, Object>> selectInventoryListByStore(Map<String, Object> paramMap);
