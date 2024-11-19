@@ -25,6 +25,17 @@ public class CustomerController {
 	@Autowired StoreService storeService;
 	@Autowired AddressService addressService;
 	
+	// 고객 리스트 출력
+	@GetMapping("/on/customerList")
+	public String customerList(Model model
+									, @RequestParam(defaultValue = "1") Integer currentPage
+									, @RequestParam(defaultValue = "10") Integer rowPerPage) {
+		//Map<String, Object> resultMap = customerService
+		
+		return "on/customerList";
+	}
+	
+	
 	// 고객 추가
 	@GetMapping("/on/addCustomer")
 	public String addCustomer(Model model, @RequestParam(required = false) String searchAddress) {

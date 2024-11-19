@@ -15,6 +15,9 @@ import lombok.extern.slf4j.Slf4j;
 public class CustomerService {
 	@Autowired CustomerMapper customerMapper;
 	
+	//
+	
+	
 	// /on/addCustomer 고객 추가
 	public Integer addCustomer(Customer customer) {
 		return customerMapper.insertCustomer(customer);
