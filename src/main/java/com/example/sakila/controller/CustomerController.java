@@ -1,6 +1,7 @@
 package com.example.sakila.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +31,16 @@ public class CustomerController {
 	public String customerList(Model model
 									, @RequestParam(defaultValue = "1") Integer currentPage
 									, @RequestParam(defaultValue = "10") Integer rowPerPage) {
-		//Map<String, Object> resultMap = customerService
+		
+		Map<String, Object> resultMap = customerService.getCustomerList(currentPage, rowPerPage);
+		
+		log.debug(resultMap.toString());
+		
+		model.addAttribute("currentPage", currentPage);
+		// resultMap 풀어서... 이동(통으로 넘기면 View 코드 복잡)
+		model.addAttribute("startPagingNum", resultMap.get("startPagingNum"));
+		model.addAttribute("endPagingNum", resultMap.get("endPagingNum"));
+		model.addAttribute("customerList", resultMap.get("customerList"));
 		
 		return "on/customerList";
 	}

@@ -9,8 +9,9 @@
 			, store_id storeId
 			, first_name firstName
 			, last_name lastName
-			, address_id addressId
 			, email
+			, address_id addressId
+			, active
 			, create_date createDate
 			, last_update lastUpdate
 		FROM customer

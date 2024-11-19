@@ -21,6 +21,70 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<h1>customerList</h1>
+			
+			<table class="table" style="width : 80%">
+				<tr>
+					<td>customerId</td>
+					<td>storeId</td>
+					<td>firstName</td>
+					<td>lastName</td>
+					<td>email</td>
+					<td>addressId</td>
+					<td>active</td>
+					<td>createDate</td>
+					<td>lastUpdate</td>
+				</tr>
+				<c:forEach var="c" items="${customerList}">
+					<tr>
+						<td>
+							<!-- 고객 상세 정보(주소 x 렌탈 x 지불..조인 발생.. -->
+							<a href="">
+								${c.customerId}
+							</a>
+						</td>
+						<td>${c.storeId}</td>
+						<td>${c.firstName}</td>
+						<td>${c.lastName}</td>
+						<td>${c.email}</td>
+						<td>${c.addressId}</td>
+						<td>${c.active}</td>
+						<td>${c.createDate}</td>
+						<td>${c.lastUpdate}</td>
+					</tr>
+				</c:forEach>
+			</table>
+			
+			<div>
+				<!-- 페이징 -->
+				<!-- 이전 11 12 13 14 15 16 17 18 19 20 다음 -->
+				<a href ="${pageContext.request.contextPath}/on/customerList?currentPage=${currentPage-10}">
+					[이전] <!-- if분기 필요 -->
+				</a>
+				
+				<c:forEach var="num" begin="${startPagingNum}" end="${endPagingNum}">
+					<c:if test="${num == currentPage}">
+						${num}&nbsp;
+					</c:if>
+					<c:if test="${num != currentPage}">
+						<a href="${pageContext.request.contextPath}/on/customerList?currentPage=${num}">						
+							${num}
+						</a>
+						&nbsp;
+					</c:if>
+				</c:forEach>
+
+				<a href ="${pageContext.request.contextPath}/on/customerList?currentPage=${currentPage+10}">
+					[다음] <!-- if분기 필요 -->
+				</a>
+			</div>
+			
+			<div>
+				<form>
+					<input type="text">
+					<button type="button">이름검색</button>
+				</form>
+			</div>
+			
 		</div>
 	</div>
 	
