@@ -50,6 +50,11 @@ public class FilmController {
 		Map<String, Object> film = filmService.getFilmOne(filmId);
 		model.addAttribute("film", film);
 		
+		// 언어 리스트 출력
+		List<Language> languageList = languageService.getLanguageList();
+		log.debug(languageList.toString());	//디버깅
+		model.addAttribute("languageList", languageList);
+		
 		log.debug(film.toString());
 		
 		return "on/modifyFilm";

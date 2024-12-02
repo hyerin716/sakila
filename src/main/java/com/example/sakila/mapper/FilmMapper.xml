@@ -145,6 +145,7 @@
 			, fi.last_update lastUpdate
 			, fi.original_language_id originalLanguageId
 			, la.name language
+			, la.language_id languageId
 		FROM film fi INNER JOIN language la
 		ON fi.language_id = la.language_id
 		WHERE fi.film_id = #{filmId}

@@ -27,6 +27,9 @@
 						<td>${film.filmId}</td>						
 					</tr>
 					<tr>
+						<td colspan="2" class="fw-bold">필수 항목</td>
+					</tr>
+					<tr>
 						<td>title</td>
 						<td>
 							<form id="formTitle" action="${pageContext.request.contextPath}/on/modifyFilm" method="post">
@@ -37,22 +40,18 @@
 						</td>
 					</tr>
 					<tr>
-						<td>description</td>
+						<td>language</td>
 						<td>
-							<form id="formDescription" action="${pageContext.request.contextPath}/on/modifyFilm" method="post">
-								<input type="hidden" name="filmId" value="${film.filmId}">
-								<textarea name="description" id="description" rows="4" cols="50">${film.description}</textarea>				
-								<button type="button" id="btnDescription">description 수정</button>
-							</form>
-						</td>
-					</tr>
-					<tr>
-						<td>releaseYear</td>
-						<td>
-							<form id="formReleaseYear" action="${pageContext.request.contextPath}/on/modifyFilm" method="post">
-								<input type="hidden" name="filmId" value="${film.filmId}">
-								<input type="text" name="releaseYear" id="releaseYear" value="${film.releaseYear}">				
-								<button type="button" id="btnReleaseYear">releaseYear 수정</button>
+							<form id="formLanguage" action="${pageContext.request.contextPath}/on/modifyFilm" method="post">
+								<select id="language" name="language">
+									<option value="">언어선택</option>
+									<c:forEach var="la" items="${languageList}">
+									 	<option value="${la.languageId}" 
+					                        <c:if test="${la.languageId == film.languageId}">selected</c:if>>
+					                 		${la.name}
+					               	 	</option>
+									</c:forEach>
+								</select>
 							</form>
 						</td>
 					</tr>
@@ -73,16 +72,6 @@
 								<input type="hidden" name="filmId" value="${film.filmId}">
 								<input type="text" name="rentalRate" id="rentalRate" value="${film.rentalRate}">				
 								<button type="button" id="btnRentalRate">rentalRate 수정</button>
-							</form>
-						</td>
-					</tr>
-					<tr>
-						<td>length</td>
-						<td>
-							<form id="formLength" action="${pageContext.request.contextPath}/on/modifyFilm" method="post">
-								<input type="hidden" name="filmId" value="${film.filmId}">
-								<input type="text" name="length" id="length" value="${film.length}">				
-								<button type="button" id="btnLength">length 수정</button>
 							</form>
 						</td>
 					</tr>
@@ -115,18 +104,46 @@
 							</form>
 						</td>
 					</tr>
-					<!-- 선택적,필수적 나눠서 하기 -->
 					<tr>
-						<td>specialFeatures</td>
-						<td>${film.specialFeatures}</td>
+						<td colspan="2" class="fw-bold">선택적 항목</td>
 					</tr>
 					<tr>
+						<td>length</td>
+						<td>
+							<form id="formLength" action="${pageContext.request.contextPath}/on/modifyFilm" method="post">
+								<input type="hidden" name="filmId" value="${film.filmId}">
+								<input type="text" name="length" id="length" value="${film.length}">				
+								<button type="button" id="btnLength">length 수정</button>
+							</form>
+						</td>
+					</tr>
+					<tr>	<!-- 수정해야됨 -->
 						<td>originalLanguageId</td>
 						<td>${film.originalLanguageId}</td>
 					</tr>
 					<tr>
-						<td>language</td>
-						<td>${film.language}</td>
+						<td>releaseYear</td>
+						<td>
+							<form id="formReleaseYear" action="${pageContext.request.contextPath}/on/modifyFilm" method="post">
+								<input type="hidden" name="filmId" value="${film.filmId}">
+								<input type="text" name="releaseYear" id="releaseYear" value="${film.releaseYear}">				
+								<button type="button" id="btnReleaseYear">releaseYear 수정</button>
+							</form>
+						</td>
+					</tr>
+					<tr> <!-- 수정해야됨 -->
+						<td>specialFeatures</td>
+						<td>${film.specialFeatures}</td>
+					</tr>
+					<tr>
+						<td>description</td>
+						<td>
+							<form id="formDescription" action="${pageContext.request.contextPath}/on/modifyFilm" method="post">
+								<input type="hidden" name="filmId" value="${film.filmId}">
+								<textarea name="description" id="description" rows="4" cols="50">${film.description}</textarea>				
+								<button type="button" id="btnDescription">description 수정</button>
+							</form>
+						</td>
 					</tr>
 				</table> 
 			
