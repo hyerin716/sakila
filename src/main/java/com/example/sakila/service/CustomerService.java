@@ -60,6 +60,7 @@ public class CustomerService {
 		Map<String, Object> resultMap = new HashMap<>();
 		resultMap.put("startPagingNum", startPagingNum);
 		resultMap.put("endPagingNum", endPagingNum);
+		resultMap.put("lastPage", lastPage);
 		resultMap.put("customerList", customerList);
 		return resultMap;	
 		

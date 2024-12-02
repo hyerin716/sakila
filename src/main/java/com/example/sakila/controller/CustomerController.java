@@ -40,6 +40,7 @@ public class CustomerController {
 		// resultMap 풀어서... 이동(통으로 넘기면 View 코드 복잡)
 		model.addAttribute("startPagingNum", resultMap.get("startPagingNum"));
 		model.addAttribute("endPagingNum", resultMap.get("endPagingNum"));
+		model.addAttribute("lastPage", resultMap.get("lastPage"));
 		model.addAttribute("customerList", resultMap.get("customerList"));
 		
 		return "on/customerList";

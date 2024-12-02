@@ -57,9 +57,11 @@
 			<div>
 				<!-- 페이징 -->
 				<!-- 이전 11 12 13 14 15 16 17 18 19 20 다음 -->
-				<a href ="${pageContext.request.contextPath}/on/customerList?currentPage=${currentPage-10}">
-					[이전] <!-- if분기 필요 -->
-				</a>
+				<c:if test="${startPagingNum > 1}">
+					<a href ="${pageContext.request.contextPath}/on/customerList?currentPage=${startPagingNum-10}">
+						[이전]
+					</a>
+				</c:if>
 				
 				<c:forEach var="num" begin="${startPagingNum}" end="${endPagingNum}">
 					<c:if test="${num == currentPage}">
@@ -72,10 +74,11 @@
 						&nbsp;
 					</c:if>
 				</c:forEach>
-
-				<a href ="${pageContext.request.contextPath}/on/customerList?currentPage=${currentPage+10}">
-					[다음] <!-- if분기 필요 -->
-				</a>
+				<c:if test="${endPagingNum != lastPage}">
+					<a href ="${pageContext.request.contextPath}/on/customerList?currentPage=${startPagingNum+10}">
+						[다음]
+					</a>
+				</c:if>
 			</div>
 			
 			<div>
