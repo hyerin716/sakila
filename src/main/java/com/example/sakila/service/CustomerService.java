@@ -21,9 +21,15 @@ public class CustomerService {
 	
 	// lastPage 구하기
 	public Integer getLastPage(Integer rowPerPage) {
-		Integer lastPage = rowPerPage;
+		// 총 개수 구하기
+		Integer totalRow = customerMapper.countTotalRow();
 		
-		return 0;
+		Integer lastPage = totalRow / rowPerPage;
+		
+		if(totalRow % rowPerPage != 0) {
+			lastPage++;
+		}
+		return lastPage;
 	}
 	
 	// /on/customerList 고객리스트 출력
@@ -41,13 +47,12 @@ public class CustomerService {
 		// 페이징 마지막 넘버
 		Integer endPagingNum = startPagingNum + (numPerPage - 1);
 
-		/*
+		
 		// 현재페이지가 95다 91~100출력인데 마지막 페이지가 98이면 91~98 출력되도록...
 		Integer lastPage = this.getLastPage(rowPerPage);
 		if(lastPage < endPagingNum) {
 			endPagingNum = lastPage;
 		}
-		*/
 		
 		// beginRow, rowPerpage과 함께 전달해서 customerList 출력함수 호출
 		List<Customer> customerList = customerMapper.selectCustomerList(paraMap);
