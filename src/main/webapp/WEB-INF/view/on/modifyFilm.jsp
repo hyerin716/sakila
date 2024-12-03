@@ -43,8 +43,8 @@
 						<td>language</td>
 						<td>
 							<form id="formLanguage" action="${pageContext.request.contextPath}/on/modifyFilm" method="post">
-								<select id="language" name="language">
-									<option value="">언어선택</option>
+								<input type="hidden" name="filmId" value="${film.filmId}">
+								<select id="languageId" name="languageId">
 									<c:forEach var="la" items="${languageList}">
 									 	<option value="${la.languageId}" 
 					                        <c:if test="${la.languageId == film.languageId}">selected</c:if>>
@@ -52,6 +52,7 @@
 					               	 	</option>
 									</c:forEach>
 								</select>
+								<button type="button" id="btnLanguage">Language 수정</button>
 							</form>
 						</td>
 					</tr>
@@ -117,9 +118,23 @@
 							</form>
 						</td>
 					</tr>
-					<tr>	<!-- 수정해야됨 -->
+					<tr>
 						<td>originalLanguageId</td>
-						<td>${film.originalLanguageId}</td>
+						<td>
+							<form id="formOriginalLanguage" action="${pageContext.request.contextPath}/on/modifyFilm" method="post">
+								<input type="hidden" name="filmId" value="${film.filmId}">
+								<select id="originalLanguageId" name="originalLanguageId">
+									<option value="">오리지널언어선택</option>
+									<c:forEach var="la" items="${languageList}">
+										<option value="${la.languageId}"
+											<c:if test="${la.languageId == film.originalLanguageId}">selected</c:if>>
+											${la.name}
+										</option>
+									</c:forEach>
+								</select>							
+								<button type="button" id="btnOriginalLanguage">originalLanguage 수정</button>
+							</form>	
+						</td>						
 					</tr>
 					<tr>
 						<td>releaseYear</td>
@@ -131,10 +146,27 @@
 							</form>
 						</td>
 					</tr>
-					<tr> <!-- 수정해야됨 -->
+					<tr> 
 						<td>specialFeatures</td>
-						<td>${film.specialFeatures}</td>
+						<td>
+							<form id="formSpecialFeatures" action="${pageContext.request.contextPath}/on/modifyFilm" method="post">
+								<input type="hidden" name="filmId" value="${film.filmId}">
+								<!-- checkbox, set('Trailers','Commentaries','Deleted Scenes','Behind the Scenes') 
+								DB기본값 : NULL
+								-->
+								<input type="checkbox" id="specialFeatures" name="specialFeatures" 
+									value="Trailers" ${film.specialFeatures != null && film.specialFeatures.contains('Trailers') ? 'checked' : ''}>Trailers
+								<input type="checkbox" id="specialFeatures" name="specialFeatures" 
+									value="Commentaries" ${film.specialFeatures != null && film.specialFeatures.contains('Commentaries') ? 'checked' : ''}>Commentaries
+								<input type="checkbox" id="specialFeatures" name="specialFeatures" 
+									value="Deleted Scenes" ${film.specialFeatures != null && film.specialFeatures.contains('Deleted Scenes') ? 'checked' : ''}>Deleted Scenes
+								<input type="checkbox" id="specialFeatures" name="specialFeatures" 
+									value="Behind the Scenes" ${film.specialFeatures != null && film.specialFeatures.contains('Behind the Scenes') ? 'checked' : ''}>Behind the Scenes
+								<button type="button" id="btnSpecialFeatures">specialFeatures 수정</button>
+							</form>
+						</td>
 					</tr>
+					
 					<tr>
 						<td>description</td>
 						<td>
@@ -146,11 +178,96 @@
 						</td>
 					</tr>
 				</table> 
-			
-			
-			
 		</div>
 	</div>
-	
 </body>
+<script>
+   // 폼 유효성 검사(제외 description, releaseYear, originalLanguageId, length, specialFeatures)
+   // title
+   $('#btnTitle').click(function(){
+      if($('#title').val() == '') {
+         alert('title을 입력하세요');
+      } else {
+         $('#formTitle').submit();
+      }
+   });
+   // language
+   $('#btnLanguage').click(function(){
+	      if($('#languageId').val() == '') {
+	         alert('language를 선택하세요');
+	      } else {
+	         $('#formLanguage').submit();
+	      }
+   });
+	// rentalDuration
+   $('#btnRentalDuration').click(function(){
+	      if($.isNumeric($('#rentalDuration').val()) == false) {
+	         alert('rentalDuration 숫자를 입력하세요');
+	      } else {
+	         $('#formRentalDuration').submit();
+	      }
+   });
+   // rentalRate
+   $('#btnRentalRate').click(function(){
+	      if($.isNumeric($('#rentalRate').val()) == false) {
+	         alert('rentalRate 숫자를 입력하세요');
+	      } else {
+	         $('#formRentalRate').submit();
+	      }
+   });
+   // replacementCost
+   $('#btnReplacementCost').click(function(){
+	      if($.isNumeric($('#replacementCost').val()) == false) {
+	         alert('replacementCost 숫자를 입력하세요');
+	      } else {
+	         $('#formReplacementCost').submit();
+	      }
+   });
+   // rating
+   $('#btnRating').click(function(){
+	      if($('.rating:checked').length == 0) {
+	         alert('rating을 선택하세요');
+	      } else {
+	         $('#formRating').submit();
+	      }
+   });
+    
+   // length
+   $('#btnLength').click(function(){
+	   let lengthValue = $('#length').val().trim();  // 공백을 제거한 값
+
+	    // 값이 공백이거나 숫자만 있는지 확인
+	    if (lengthValue !== "" && $.isNumeric(lengthValue) == false) {
+	        alert('length는 숫자만 입력가능합니다');
+	    } else {
+	        $('#formLength').submit();
+	    }
+   });
+   // originalLanguageId
+   $('#btnOriginalLanguage').click(function(){
+	   $('#formOriginalLanguage').submit();
+   });
+   // releaseYear
+   $('#btnReleaseYear').click(function(){
+	   let lengthValue = $('#releaseYear').val().trim();  // 공백을 제거한 값
+
+	    // 값이 공백이거나 숫자만 있는지 확인
+	    if (lengthValue !== "" && $.isNumeric(lengthValue) == false) {
+	    	alert('releaseYear은 숫자만 입력가능합니다');
+	    } else {
+	        $('#formReleaseYear').submit();
+	    }
+	   
+   });
+   // specialFeatures
+   $('#btnSpecialFeatures').click(function(){
+	   $('#formSpecialFeatures').submit();
+   });
+   // description
+   $('#btnDescription').click(function(){
+	   $('#formDescription').submit();
+   });
+
+</script>
+
 </html>

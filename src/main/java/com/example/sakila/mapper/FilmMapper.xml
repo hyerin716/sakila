@@ -7,37 +7,52 @@
 		UPDATE film
 		<set>
 			<if test="title != null">
-				title = #{title}
-			</if>
-			<if test="description != null">
-				description = #{description}
-			</if>
-			<if test="releaseYear != null">
-				release_year = #{releaseYear}
+				title = #{title},
 			</if>
 			<if test="languageId != null">
-				language_id = #{languageId}
-			</if>
-			<if test="originalLanguageId != null">
-				original_language_id = #{originalLanguageId}
+				language_id = #{languageId},
 			</if>
 			<if test="rentalDuration != null">
-				rental_duration = #{rentalDuration}
+				rental_duration = #{rentalDuration},
 			</if>
 			<if test="rentalRate != null">
-				rental_rate = #{rentalRate}
-			</if>
-			<if test="length != null">
-				length = #{length}
+				rental_rate = #{rentalRate},
 			</if>
 			<if test="replacementCost != null">
-				replacement_cost = #{replacementCost}
+				replacement_cost = #{replacementCost},
 			</if>
 			<if test="rating != null">
-				rating = #{rating}
+				rating = #{rating},
+			</if>
+			<if test="length != null">
+				length = #{length},
+			</if>
+			<if test="length == null">
+				length = #{length},
+			</if>
+			<if test="originalLanguageId != null">
+				original_language_id = #{originalLanguageId},
+			</if>
+			<if test="originalLanguageId == null">
+				original_language_id = #{originalLanguageId},
+			</if>
+			<if test="releaseYear != null">
+				release_year = #{releaseYear},
+			</if>
+			<if test="releaseYear == null">
+				release_year = #{releaseYear},
 			</if>
 			<if test="specialFeatures != null">
-				special_features = #{specialFeatures}
+				special_features = #{specialFeatures},
+			</if>
+			<if test="specialFeatures == null">
+				special_features = #{specialFeatures},
+			</if>
+			<if test="description != null">
+				description = #{description},
+			</if>
+			<if test="description == null">
+				description = #{description},
 			</if>
 		</set>
 		WHERE film_id = #{filmId}
