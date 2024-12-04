@@ -19,6 +19,11 @@ import lombok.extern.slf4j.Slf4j;
 public class CustomerService {
 	@Autowired CustomerMapper customerMapper;
 	
+	// /on/addRental : 대여하기: 이름 검색해서 고객리스트 출력
+	public List<Customer> getCustomerListByName(String searchName) {
+		return customerMapper.selectCustomerListByName(searchName);
+	}
+	
 	// lastPage 구하기
 	public Integer getLastPage(Integer rowPerPage) {
 		// 총 개수 구하기

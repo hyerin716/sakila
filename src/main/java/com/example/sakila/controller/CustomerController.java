@@ -26,6 +26,13 @@ public class CustomerController {
 	@Autowired StoreService storeService;
 	@Autowired AddressService addressService;
 	
+	// 고객 상세정보 출력
+	@GetMapping("/on/customerOne")
+	public String customerOne(@RequestParam Integer customerId) {
+		
+		return "on/customerOne";
+	}
+	
 	// 고객 리스트 출력
 	@GetMapping("/on/customerList")
 	public String customerList(Model model

@@ -2,6 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.CustomerMapper">
 
+	<!-- /on/addRental : 이름 검색해서 고객리스트 출력 -->
+	<select id="selectCustomerListByName" parameterType="String" resultType="com.example.sakila.vo.Customer">
+		SELECT
+			customer_id customerId
+			, first_name firstName
+			, last_name lastName
+			, email email
+		FROM customer
+		WHERE ACTIVE = 1 AND
+		LOWER(CONCAT(first_name, last_name)) LIKE CONCAT('%',LOWER(#{searchName}),'%')
+	</select>
+	
 	<!-- /on/customerList 고객리스트 총 개수 -->
 	<select id="countTotalRow" resultType="Integer">
 		SELECT COUNT(*) FROM customer

@@ -11,7 +11,83 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-
+<body class="container-flud">
+	<div class="row">
+		<div class="col-sm-2 bg-light">
+			<!-- leftMenu.jsp include -->
+			<c:import url="/WEB-INF/view/on/inc/leftMenu.jsp"></c:import>
+		</div>
+		
+		<div class="col-sm-10">
+			<!-- main content -->
+			<h1>ADD RENTAL</h1>
+			<form id="formSearchName" action="${pageContext.request.contextPath}/on/addRental" method="get">
+				<input type="hidden" name="inventoryId" value="${inventoryId}">
+				이름 검색 : 
+				<input type="text" name="searchName" id="searchName">
+				<button type="button" id="btnSearchName">이름검색</button>
+			</form>
+			
+			<form id="formAddRental" method="post" action="${pageContext.request.contextPath}/on/addRental">
+				<table class="table">
+					<tr>
+						<td>customerId</td>
+						<td>
+							<select name="customerId" id="customerId" size="5">
+								<c:forEach var="c" items="${customerList}"> 
+									<option value="${c.customerId}">
+										${c.firstName}
+										${c.lastName}
+										${c.email}
+									</option>
+								</c:forEach>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>inventoryId</td>
+						<td>
+							<input type="text" name="inventoryId" id="inventoryId" value="${inventoryId}" readonly>
+							<!-- request.getAttribute("inventoryId") -->
+						</td>						
+					</tr>
+					<tr>
+						<td>staffId</td>
+						<td>
+							<input type="text" name="staffId" id="staffId" value="${loginStaff.staffId}" readonly>
+						</td>
+					</tr>
+					<tr>
+						<td>rentalDate</td>
+						<td>
+							<input type="date" name="rentalDate" id="rentalDate">
+						</td>
+					</tr>
+					<button type="button" id="btnAddRental">대여</button>
+				</table>
+			</form>
+		</div>
+	</div>
 </body>
+<script>
+	// 대여 버튼 액션
+	$('#btnAddRental').click(function(){
+		if($('#customerId').val() == null || $('#customerId').val() == ''){
+			alert('고객이름 검색 후 아이디를 선택하세요.');
+		} else if($('rentalDate').val() == '') {
+			alert('렌탈 날짜를 입력하세요.');
+		} else {
+			$('#formAddRental').submit();
+		}
+	});
+	
+	// 이름검색 버튼 액션
+	$('#btnSearchName').click(function(){
+		if($('#searchName').val() == ''){
+			alert('검색어를 입력하세요.');
+		} else{
+			$('#formSearchName').submit();	
+		}		
+	});
+</script>
 </html>
