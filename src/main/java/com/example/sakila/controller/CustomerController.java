@@ -1,5 +1,6 @@
 package com.example.sakila.controller;
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.sakila.service.AddressService;
 import com.example.sakila.service.CustomerService;
+import com.example.sakila.service.RentalService;
 import com.example.sakila.service.StoreService;
 import com.example.sakila.vo.Address;
 import com.example.sakila.vo.Customer;
@@ -25,10 +27,24 @@ public class CustomerController {
 	@Autowired CustomerService customerService;
 	@Autowired StoreService storeService;
 	@Autowired AddressService addressService;
+	@Autowired RentalService rentalService;
 	
 	// 고객 상세정보 출력
 	@GetMapping("/on/customerOne")
-	public String customerOne(@RequestParam Integer customerId) {
+	public String customerOne(Model model
+									,@RequestParam Integer customerId) {
+		
+		// 고객정보 출력
+		Map<String, Object> customer = customerService.getCustomerOne(customerId);
+		log.debug(customer.toString());	//디버깅
+		
+		model.addAttribute("customer", customer);
+		
+		// 고객 대여정보 출력
+		List<Map<String, Object>> rentalList = rentalService.getRentalOne(customerId);
+		
+		log.debug(rentalList.toString());	//디버깅
+	    model.addAttribute("rentalList", rentalList);
 		
 		return "on/customerOne";
 	}

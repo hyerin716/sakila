@@ -19,6 +19,11 @@ import lombok.extern.slf4j.Slf4j;
 public class CustomerService {
 	@Autowired CustomerMapper customerMapper;
 	
+	// /on/customerOne : 고객 상세정보 출력
+	public Map<String, Object> getCustomerOne(int customerId){
+		return customerMapper.selectCustomerOne(customerId);
+	}
+	
 	// /on/addRental : 대여하기: 이름 검색해서 고객리스트 출력
 	public List<Customer> getCustomerListByName(String searchName) {
 		return customerMapper.selectCustomerListByName(searchName);

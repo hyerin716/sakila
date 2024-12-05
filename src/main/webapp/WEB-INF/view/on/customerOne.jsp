@@ -21,7 +21,60 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<h1>고객 상세정보</h1>
-		</div>
+		
+			<!-- 고객정보 출력 -->
+			<h2>고객 정보</h2>
+			<table class="table" style="width: 80%;">
+				<tr>
+					<td>customerId</td>
+					<td>${customer.customerId}</td>
+				</tr>
+				<tr>
+					<td>firstName</td>
+					<td>${customer.firstName}</td>
+				</tr>
+				<tr>
+					<td>lastName</td>
+					<td>${customer.lastName}</td>
+				</tr>
+				<tr>
+					<td>email</td>
+					<td>${customer.email}</td>
+				</tr>
+				<tr>
+					<td>address</td>
+					<td>${customer.address}</td>
+				</tr>
+			</table>
+			<!-- 대여정보 있을 경우 출력 -->
+			<!-- 대여정보 출력 -->
+			<h2>대여 정보</h2>
+			<table class="table" style="width: 80%;">
+				<tr>
+					<th>대여 날짜</th>
+					<th>대여 film</th>
+					<th>대여점</th>
+				</tr>
+				<c:forEach var="r" items="${rentalList}">
+					<c:if test="${r.customerId != null}">
+						<tr>
+							<td>${r.rentalDate}</td>
+							<td>${r.title}</td>
+							<td>${r.storeId}</td>						
+						</tr>
+					</c:if>
+				</c:forEach>
+				<c:if test="${empty rentalList}">
+					<tr>
+						<td colspan="3" style="text-align: center;">대여 정보가 없습니다.</td>
+					</tr>
+				</c:if>
+			</table>
+
+		</div>		
+		
+		
+		
 	</div>
 	
 </body>

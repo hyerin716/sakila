@@ -9,6 +9,8 @@ import com.example.sakila.vo.Customer;
 
 @Mapper
 public interface CustomerMapper {
+	// /on/customerOne : 고객 상세정보 출력
+	Map<String, Object> selectCustomerOne(Integer customerId);
 	
 	// /on/addRental : 대여하기: 이름 검색해서 고객리스트 출력
 	List<Customer> selectCustomerListByName(String searchName);

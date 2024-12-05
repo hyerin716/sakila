@@ -43,7 +43,7 @@
 					<tr>
 						<td>
 							<!-- 고객 상세 정보(주소 x 렌탈 x 지불..조인 발생.. -->
-							<a href="">
+							<a href="${pageContext.request.contextPath}/on/customerOne?customerId=${c.customerId}">
 								${c.customerId}
 							</a>
 						</td>
