@@ -14,7 +14,7 @@ public interface CustomerMapper {
 	List<Customer> selectCustomerListByName(String searchName);
 	
 	// /on/customerList 고객리스트 총 개수 
-	Integer countTotalRow();
+	Integer countTotalRow(String searchName);
 	
 	// /on/customerList 고객리스트 출력
 	List<Customer> selectCustomerList(Map<String, Object> paramMap);

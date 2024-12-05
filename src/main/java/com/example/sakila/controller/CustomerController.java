@@ -37,12 +37,14 @@ public class CustomerController {
 	@GetMapping("/on/customerList")
 	public String customerList(Model model
 									, @RequestParam(defaultValue = "1") Integer currentPage
-									, @RequestParam(defaultValue = "10") Integer rowPerPage) {
+									, @RequestParam(defaultValue = "10") Integer rowPerPage
+									, @RequestParam(required = false) String searchName) {
 		
-		Map<String, Object> resultMap = customerService.getCustomerList(currentPage, rowPerPage);
+		Map<String, Object> resultMap = customerService.getCustomerList(currentPage, rowPerPage, searchName);
 		
 		log.debug(resultMap.toString());
 		
+		model.addAttribute("searchName", searchName);
 		model.addAttribute("currentPage", currentPage);
 		// resultMap 풀어서... 이동(통으로 넘기면 View 코드 복잡)
 		model.addAttribute("startPagingNum", resultMap.get("startPagingNum"));

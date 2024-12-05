@@ -21,7 +21,12 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<h1>customerList</h1>
-			
+			<div>
+				<form id="formSearch" action="${pageContext.request.contextPath}/on/customerList" method="get">
+					<input type="text" name="searchName" id="searchName">
+					<button type="button" id="btnSearch">이름검색</button>
+				</form>
+			</div>
 			<table class="table" style="width : 80%">
 				<tr>
 					<td>customerId</td>
@@ -57,39 +62,70 @@
 			<div>
 				<!-- 페이징 -->
 				<!-- 이전 11 12 13 14 15 16 17 18 19 20 다음 -->
-				<c:if test="${startPagingNum > 1}">
-					<a href ="${pageContext.request.contextPath}/on/customerList?currentPage=${startPagingNum-10}">
-						[이전]
-					</a>
-				</c:if>
-				
-				<c:forEach var="num" begin="${startPagingNum}" end="${endPagingNum}">
-					<c:if test="${num == currentPage}">
-						${num}&nbsp;
-					</c:if>
-					<c:if test="${num != currentPage}">
-						<a href="${pageContext.request.contextPath}/on/customerList?currentPage=${num}">						
-							${num}
+				<!-- 검색어 없는 경우 -->
+				<c:if test="${searchName == null}">
+					<c:if test="${startPagingNum > 1}">
+						<a href ="${pageContext.request.contextPath}/on/customerList?currentPage=${startPagingNum-10}">
+							[이전]
 						</a>
-						&nbsp;
 					</c:if>
-				</c:forEach>
-				<c:if test="${endPagingNum != lastPage}">
-					<a href ="${pageContext.request.contextPath}/on/customerList?currentPage=${startPagingNum+10}">
-						[다음]
-					</a>
+					
+					<c:forEach var="num" begin="${startPagingNum}" end="${endPagingNum}">
+						<c:if test="${num == currentPage}">
+							${num}&nbsp;
+						</c:if>
+						<c:if test="${num != currentPage}">
+							<a href="${pageContext.request.contextPath}/on/customerList?currentPage=${num}">						
+								${num}
+							</a>
+							&nbsp;
+						</c:if>
+					</c:forEach>
+					<c:if test="${endPagingNum != lastPage}">
+						<a href ="${pageContext.request.contextPath}/on/customerList?currentPage=${startPagingNum+10}">
+							[다음]
+						</a>
+					</c:if>
+				</c:if>				
+				<!-- 검색어 있는 경우 -->
+				<c:if test="${searchName != null}">
+					<c:if test="${startPagingNum > 1}">
+						<a href ="${pageContext.request.contextPath}/on/customerList?currentPage=${startPagingNum-10}&searchName=${searchName}">
+							[이전]
+						</a>
+					</c:if>
+					
+					<c:forEach var="num" begin="${startPagingNum}" end="${endPagingNum}">
+						<c:if test="${num == currentPage}">
+							${num}&nbsp;
+						</c:if>
+						<c:if test="${num != currentPage}">
+							<a href="${pageContext.request.contextPath}/on/customerList?currentPage=${num}&searchName=${searchName}">						
+								${num}
+							</a>
+							&nbsp;
+						</c:if>
+					</c:forEach>
+					<c:if test="${endPagingNum != lastPage}">
+						<a href ="${pageContext.request.contextPath}/on/customerList?currentPage=${startPagingNum+10}&searchName=${searchName}">
+							[다음]
+						</a>
+					</c:if>
 				</c:if>
-			</div>
-			
-			<div>
-				<form>
-					<input type="text">
-					<button type="button">이름검색</button>
-				</form>
 			</div>
 			
 		</div>
 	</div>
 	
 </body>
+<script>
+	$('#btnSearch').click(function(){
+		if($('#searchName').val() == ''){
+			alert('검색어를 입력하세요.');
+			return;
+		}
+		$('#formSearch').submit();
+	});
+</script>
+
 </html>
