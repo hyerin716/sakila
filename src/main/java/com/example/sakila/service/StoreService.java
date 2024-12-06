@@ -15,6 +15,11 @@ import com.example.sakila.vo.Store;
 public class StoreService {
 	@Autowired StoreMapper storeMapper;
 	
+	// /on/addStore : 지점 추가
+	public Integer addStore(Store store) {
+		return storeMapper.insertStore(store);
+	}
+	
 	// /on/storeList
 	public List<Map<String, Object>> getStoreList(){
 		return storeMapper.selectStoreList();

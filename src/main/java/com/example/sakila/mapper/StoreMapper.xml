@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.StoreMapper">
+	
+	<!-- /on/addStore : 지점 추가 -->
+	<insert id="insertStore" parameterType="com.example.sakila.vo.Store">
+		INSERT INTO store (manager_staff_id, address_id)
+		VALUES (#{managerStaffId}, #{addressId})
+	</insert>
+
 	<!-- /on/storeList : 지점리스트 출력 (store x staff x address) -->
 	<select id="selectStoreList" resultType="Map">
 		SELECT 
-			t.store_id storeId
-			, t.manager_staff_id managerStaffId
-			, t.address_id addressId
-			, t.staff_id staffId
-			, t.first_name firstName
-			, t.last_name lastName
-			, t.email email
-			, t.username username
+			st.store_id storeId
+			, st.manager_staff_id managerStaffId
+			, st.address_id addressId
 			, a.address address
 			, a.district district
 			, a.city_id cityId
 			, a.postal_code postalCode
 			, a.phone phone
-		FROM address a INNER JOIN (SELECT 
-												str.store_id
-												, str.manager_staff_id
-												, str.address_id
-												, s.staff_id
-												, s.first_name
-												, s.last_name
-												, s.email
-												, s.username
-											FROM store str INNER JOIN staff s
-											ON str.store_id = s.store_id) t
-		ON a.address_id = t.address_id
+			, sf.staff_id staffId
+			, sf.first_name firstName
+			, sf.last_name lastName
+			, sf.email email
+			, sf.username username
+		FROM store st INNER JOIN address a
+		ON st.address_id = a.address_id
+		INNER JOIN staff sf
+		ON st.manager_staff_id = sf.staff_id
 	</select>
 
 	<select id="selectStoreListByStaff"

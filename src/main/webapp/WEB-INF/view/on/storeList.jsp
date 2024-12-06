@@ -27,18 +27,16 @@
 					<th>storeId</th>
 					<th>인벤토리 리스트</th>
 					<th>인벤토리 추가</th>
+					<th>지점_address</th>
+					<th>지점_district</th>
+					<th>지점_cityId</th>
+					<th>지점_poastalCode</th>
+					<th>지점_phone</th>
 					<th>managerStaffId</th>
-					<th>addressId</th>
-					<th>staffId</th>
-					<th>firstName</th>
-					<th>lastName</th>
-					<th>email</th>
-					<th>username</th>
-					<th>address</th>
-					<th>district</th>
-					<th>cityId</th>
-					<th>poastalCode</th>
-					<th>phone</th>
+					<th>매니저_firstName</th>
+					<th>매니저_lastName</th>
+					<th>매니저_email</th>
+					<th>매니저_username</th>
 				</tr>
 				<c:forEach var="s" items="${storeList}">
 					<tr>
@@ -49,18 +47,16 @@
 						<td>
 							<a href="${pageContext.request.contextPath}/on/addInventory?storeId=${s.storeId}">인벤토리 추가</a>
 						</td>
-						<td>${s.managerStaffId}</td>
-						<td>${s.addressId}</td>
-						<td>${s.staffId}</td>
-						<td>${s.firstName}</td>
-						<td>${s.lastName}</td>
-						<td>${s.email}</td>
-						<td>${s.username}</td>
 						<td>${s.address}</td>
 						<td>${s.district}</td>
 						<td>${s.cityId}</td>
 						<td>${s.poastalCode}</td>
 						<td>${s.phone}</td>
+						<td>${s.managerStaffId}</td>
+						<td>${s.firstName}</td>
+						<td>${s.lastName}</td>
+						<td>${s.email}</td>
+						<td>${s.username}</td>
 					</tr>
 				</c:forEach>
 			</table>

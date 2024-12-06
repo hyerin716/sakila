@@ -15,6 +15,11 @@ import com.example.sakila.vo.Staff;
 public class StaffService {
 	@Autowired /*private*/ StaffMapper staffMapper;	
 	
+	// /on/addStore: 지점 추가에서 staff 선택시 리스트 출력 필요
+	public List<Staff> getStaffListByStore() {
+		return staffMapper.selectStaffListByStore();
+	}
+	
 	public Map<String, Object> getStaffOne (int staffId){
 		return staffMapper.selectStaffOne(staffId);
 	}

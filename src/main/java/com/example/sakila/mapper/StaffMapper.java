@@ -10,6 +10,8 @@ import com.example.sakila.vo.Staff;
 @Mapper
 public interface StaffMapper {
 	
+	// /on/addStore: 지점 추가에서 staff 선택시 리스트 출력 필요
+	List<Staff> selectStaffListByStore();
 	
 	int updateStaff(Staff staff); 	// 업뎃문 하나로 모든 컬럼을 개별수정 가능하게
 	

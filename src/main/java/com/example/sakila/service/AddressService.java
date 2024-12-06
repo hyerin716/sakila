@@ -14,6 +14,12 @@ import com.example.sakila.vo.Address;
 public class AddressService {
 	@Autowired AddressMapper addressMapper;
 	
+	// 검색어 없는 경우 주소 리스트
+	public List<Address> getAddressListByStore(){
+		return addressMapper.selectAddressListByStore();
+	}
+	
+	// 검색어 있는 경우 주소 리스트
 	public List<Address> getAddressListByWord(String searchAddress){
 		return addressMapper.selectAddressListByWord(searchAddress);
 	}
