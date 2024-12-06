@@ -14,6 +14,12 @@ import com.example.sakila.vo.Category;
 public class CategoryService {
 	@Autowired CategoryMapper categoryMapper;
 	
+	// /on/addCategory : 카테고리 추가
+	public Integer addCategory(Category category) {
+		return categoryMapper.insertCategory(category);
+	}
+	
+	// /on/categoryList : 카테고리 리스트 출력
 	// on/filmList에서 category 필터링 : 카테고리 리스트 출력
 	public List<Category> getCategoryList() {
 		return categoryMapper.selectCategoryList();
